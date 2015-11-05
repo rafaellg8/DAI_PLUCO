@@ -1,5 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
-:autor: Rafael Lachica Garrido
+Rafael Lachica Garrido
 
 PLUCO - RLG
 
@@ -8,10 +10,16 @@ Plataforma Universitaria Comparticion Conocimiento
 Granada 2015-2016
 
 """
+
+import sys
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 from flask import Flask, session, redirect, url_for, escape, request, render_template
 from flask import request
 from flask import Flask
+from wtforms import form, Form
 import random
+from registration import RegistrationForm
 app = Flask(__name__)
 
 """
@@ -31,6 +39,19 @@ def index():
 def hello_world(user=None):
     #return render_template('hola.html', usuario=user)
     return 'Bienvenido %s' % user
+
+"""
+Controlador registro.
+Si el registro es correcto, da la informacion del usuario.
+Sino, ofrece la pagina de registros
+"""
+@app.route('/register',methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+            return ('¡ Registro correcto!' % form.username.data)
+
+    return render_template('register.html',form=form)
 
 """
 Gestion de errores, pagina no encontrada

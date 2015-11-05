@@ -100,3 +100,8 @@ border-radius: 5px;
 width: 100%;
 color: white;
 }
+
+dd{
+      float: left;
+      margin-left: 10px;
+}
