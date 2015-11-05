@@ -1,0 +1,102 @@
+/*Encabezado Principal*/
+.encabezadoTitulo{
+color: white;
+float: left;
+font-size: 21px;
+/*background-color: #FEFC70;*/
+width: 100%;
+height: 140px;
+border: solid black 2px;
+border-radius: 10px;
+margin-top: -10px;
+/*  position: absolute;*/
+background-color: #159957;
+background-image: -webkit-linear-gradient(300deg, #155799, #159957);
+background-image: -o-linear-gradient(300deg, #155799, #159957);
+background-image: linear-gradient(30deg, #155799, #159957);
+}
+/*Formulario Login*/
+.login{
+border: solid 1px black;
+font-size: 12px;
+float: right;
+margin-top: -60px;
+margin-right: 250px;
+background-color: orange;
+width: 20%;
+height: 21%;
+color: black;
+}
+hr{
+float: left;
+width: 100%;
+height: 2px;
+color: black;
+}
+nav.menuLateral > ul > strong{
+text-decoration: none;
+color: white;
+text-align: left;
+margin-left: -25px;
+text-transform: full-width;
+list-style: none;
+}
+/*Menu Lateral*/
+nav.menuLateral > ul > li > a{
+text-decoration: none;
+color: white;
+text-align: left;
+font-size: 20px;
+text-shadow:
+-1px -1px 0 black,
+1px -1px 0 black,
+-1px 1px 0 black,
+1px 1px 0 black;
+color: white;
+font-family:fantasy ;
+list-style: none;
+}
+nav.menuLateral > ul > li{
+list-style: none;
+margin-left: -40px;
+margin-top: 30px;
+border: 1px solid blue;
+border-radius: 10px;
+background-color: orange;
+color: white;
+}
+nav.menuLateral{
+float: left;
+background-color: #159957;
+background-image: -webkit-linear-gradient(300deg, #155799, #159957);
+background-image: -o-linear-gradient(300deg, #155799, #159957);
+background-image: linear-gradient(30deg, #155799, #159957);
+font-size: 20px;
+text-align: left;
+color: white;
+width: 180px;
+border-radius: 10px;
+border: dashed 1px blue;
+margin-top: 150px;
+/*Hacemos que el menu lateral se desplaze*/
+position: fixed;
+margin-bottom: 10px .footer;
+}
+body{
+font-style: normal;
+color: black;
+}
+div.articuloPrincipal{
+margin-left: 200px;
+height: auto;
+}
+footer{
+float: left;
+background-color: #159957;
+background-image: -webkit-linear-gradient(300deg, #155799, #159957);
+background-image: -o-linear-gradient(300deg, #155799, #159957);
+background-image: linear-gradient(30deg, #155799, #159957);
+border-radius: 5px;
+width: 100%;
+color: white;
+}
