@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HOLA - {{usuario}}</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+
+<body>
+    {% if usuario %}
+    <h1>Bienvenido {{ usuario }}!</h1>
+    {% else %}
+    <h1>Bienvenido desconocido!</h1>
+    {% endif %}
+    <img src="/static/image.jpg">
+</body>
+</html>
