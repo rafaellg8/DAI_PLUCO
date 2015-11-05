@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block cabecera %}
+  {{ super() }}
+     <style type="text/css">
+    {% block title %}Principal{% endblock %}
+    </style>
+{% endblock %}
+
+    {% block encabezado %}
+      {{super()}}
+    {% endblock %}
+
+      {% block br %}{% endblock %}
+
+    {% block nav %}
+    {% endblock %}
+
+  <!--Articulo Principal-->
+  {% block div %}
+  {% endblock %}
+
+  <!--Pie de página-->
+    {% block footer %}
+      {{super()}}
+    {% endblock %}

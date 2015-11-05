@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+      <head>{% block cabecera %}
+            <link rel="stylesheet" href="/static/style.css"/>
+            <title>PLUCO - {% block title %}{% endblock %}</title>
+      {% endblock %}
+</head>
+<body>
+      <header class="encabezadoTitulo">{% block encabezado %}
+            <div>
+                  <a href="http://rafaellg8.github.io/Proyecto-IV/" alt="http://rafaellg8.github.io/Proyecto-IV/">
+                        <img src="/static/images/logo.png" width="160px" height="110" style="float: left;">
+                  </a>
+                  <br>
+                  <h3 style="margin-top: 90px;">Comparte tu conocimiento!!!</h3>
+            </div>
+            <div class="login">
+                  <form action="index.html" method="post" style="margin-top: 3px;margin-left: 25px;">
+                        Login
+                        <input type="text" name="login" size="6px" style="margin-left: 14px;"></input>
+                        <input type="text" name="password" size="6px"></input>
+                        <input value="login" type="button" font-size="4px"></input>
+                  </form>
+            </div>
+            <div>
+                  <a href="https://github.com/rafaellg8/IV-PLUCO-RLG" alt="PLUCO-RLG">
+                  <img src="/static/images/github.jpeg" width="200px" height="120px" style="float: right;
+                  margin-top: -150px;
+                  margin-right: 10px">
+                  </a>
+            </div>
+      {% endblock %}
+</header>
+<hr>{% block br %}{%endblock%}
+      <nav class="menuLateral">  {% block menu %}
+            <ul>
+                  <strong>MENU</strong>
+                  <li><a title="perfil" href="#">Perfil</a></li>
+                  <li><a title="foros" href="#">Foros</a></li>
+                  <li><a title="opciones" href="#">Opciones</a></li>
+                  <li><a title="acerca de" href="#">Acerca de</a></li>
+                  <li><a title="suscribirse" href="#">Suscribirse</a></li>
+            </ul>
+      {% endblock %}
+</nav>
+<div class="articuloPrincipal">{% block articuloPrincipal %}
+      <h1>Introduccion</h1>
+      <h2>Plataforma académica de compartición de archivos de la Universidad de Granada</h2>
+      <strong>Objetivos:</strong>
+      <ul>
+            <li> Permitir la colaboración en grupo entre los usuarios del sistema. </li>
+            <li> Añade servicios de mensajería y foros,potenciando la interacción de los usuarios, y agrupando a los mismos por varios grupos de o bien asignaturas o cursos.</li>
+      </ul>
+      <strong>Seguridad</strong>
+      <ul>
+            <li> Permitir tener un sistema seguro en el que se separen datos sensibles y credenciales de los usuarios, y por otra parte archivos de los mismos.</li>
+            <li>Por otra parte tendremos una web con foros que si es atacada no compremete la privacidad de los usuarios ni sus archivos.</li>
+      </ul>
+      <strong>Red Social PLUCO - Infraestuctura</strong>
+      <p>
+            En la parte que realizaré, mi propósito viene a ser implementar una red social en la que los usuarios puedan participar en la compartición
+            del conocimiento y apoyo en problemas que puedan surgir en las asignaturas o tareas determinadas.
+            Tendremos los usuarios asociados, donde los podremos agrupar por grupos de asignaturas o cursos,etc.
+            Para ello implementaré un sistema web en Azure, con un servidor al que se conectarán los usuarios y hará de frontend,
+            y que contendrá la información de asignaturas asociadas a cada usuario, foros en los que participa, información de los usuarios.
+            Todo está información estará en una base de datos independiente que a su vez, se complementará con la base de datos general
+            que creará mi compañero con información más exhaustiva.
+      </p>
+      {%endblock%}
+</div>
+<hr>
+<footer style="font-size: 10px">{% block footer %}
+      <p>Realizado por: <strong>&copy;Rafael Lachica Garrido</p>
+      <div>Granada ETSIIT, Curso 2015-2016.</div>
+      <div style="float: right; margin-top: -20px">Bajo licencia GNU V3.</div>
+{% endblock %}
+</footer>
+</body>
+</html>
