@@ -1,0 +1,43 @@
+{% extends "index.html" %} {% block title %}Principal{% endblock %}
+{% block panelLateral %}
+<div class="sidebar">
+  <a href="/" id="logo"><img src="/static/images/logo.png" alt="logo" width=90 height=90></a>
+  <ul>
+    <li class="selected home">
+      <a href="/">Home</a>
+    </li>
+    <li class="about">
+      <a href="https://www.github.com/rafaellg8/IV-PLUCO-RLG">About</a>
+    </li>
+    <li class="projects">
+      <a href="https://www.github.com/rafaellg8/DAI_PLUCO">Projects</a>
+    </li>
+    <li class="blog">
+      <a href="/register">Sign Up</a>
+    </li>
+    <li class="contact">
+      <a href="/register">Contact</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+{% block cabeceraTitulo %}
+<div class="botonera">
+  <input type="button" name="login" value="Login"></input>
+  <input type="button" name="register" value="Register"></input>
+</div>
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+{% block articuloPrincipal %}
+<div>
+  <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
+
+  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
+
+</div>
+{% endblock %}
