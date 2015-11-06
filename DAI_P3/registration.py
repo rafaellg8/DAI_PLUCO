@@ -18,6 +18,7 @@ Crea registros con campos asociados a cada entrada.
 """
 class RegistrationForm(Form):
       username = TextField('Nombre usuario',[validators.Length(min=5,max=30),validators.required()])
+      name = TextField('Nombre ',[validators.Length(min=5,max=30),validators.required()])
       firstName = TextField('Primer apellido',[validators.Length(min=5,max=30)])
       secondName = TextField('Segundo apellido',[validators.Length(min=5,max=30)])
       email = EmailField('Direccion email',[validators.Length(min=6,max=50),validators.Email()])

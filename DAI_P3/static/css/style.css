@@ -114,6 +114,7 @@ p a:hover {
 .sidebar {
 	width:122px;
 	float:left;
+	height: 100%;
 }
 .sidebar a#logo {
 	display:block;
@@ -295,11 +296,23 @@ p a:hover {
 
 }
 
+/*Botonera login/Registro*/
 .botonera{
 	float: right;
 	position: relative;
 	height: 1px;
 }
+
+/*Aparienca boton link*/
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+
 .body .content-home div ul {
 	list-style:none;
 	margin:11px 0 25px;
@@ -1282,6 +1295,7 @@ p a:hover {
 	height:35px;
 	overflow:hidden;
 	margin:0;
+	margin-left: -15%;
 	padding:30px 5px 0 18px;
 	background-color: #CE4718;
 }
@@ -1319,4 +1333,16 @@ p a:hover {
 }
 .footer ul li a:hover {
 	text-decoration:underline;
+}
+
+dd{
+	font-family: "Myriad Pro","Gill Sans","Gill Sans MT",Calibri,sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+dt{
+	font-family: "Myriad Pro","Gill Sans","Gill Sans MT",Calibri,sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
 }

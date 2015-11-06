@@ -14,29 +14,26 @@
 		<div class="home-page">
 			{% block  panelLateral%}
 			<div class="sidebar">
-  <a href="/" id="logo"><img src="/static/images/logo.png" alt="logo" height="90" width="90"></a>
-  <ul>
-    <li class="selected home">
-      <a href="/">Home</a>
-    </li>
-    <li class="about">
-      <a href="https://www.github.com/rafaellg8/IV-PLUCO-RLG">About</a>
-    </li>
-    <li class="projects">
-      <a href="https://www.github.com/rafaellg8/DAI_PLUCO">Projects</a>
-    </li>
-    <li class="blog">
-      <a href="/register">Sign Up</a>
-    </li>
-    <li class="contact">
-      <a href="/register">Contact</a>
-    </li>
-  </ul>
-
-</div>
-			{% endblock %}
-
-
+  			<a href="/" id="logo"><img src="/static/images/logo.png" alt="logo" height="90" width="90"></a>
+  			<ul>
+    			<li class="home">
+      			<a href="/">Home</a>
+    			</li>
+    			<li class="about">
+      			<a href="https://www.github.com/rafaellg8/IV-PLUCO-RLG">About</a>
+    			</li>
+    			<li class="projects">
+      			<a href="https://www.github.com/rafaellg8/DAI_PLUCO">Projects</a>
+    			</li>
+    			<li class="blog">
+      			<a href="/register">Sign Up</a>
+    			</li>
+    			<li class="contact">
+      			<a href="/register">Contact</a>
+    			</li>
+  		</ul>
+		</div>
+	{% endblock %}
 			<div class="body">
 				<div class="content-home">
 					{% block cabeceraTitulo %}
@@ -46,12 +43,17 @@
 							This website template has been designed by Free Website Templates for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the Forums.
 						</p>
 					</div>
+					<div class="botonera">
+					  <a href="/login"><button>login</button></a>
+					  <a href="/register"><button>register</button></a>
+					</div>
 					{% endblock %}
 					{% block articuloPrincipal %}
 					<div class="featured">
 						<img src="static/images/bed.jpg" alt="">
 					</div>
 					{% endblock %}
+					{% block extra %}
 					<div>
 						<ul>
 							<li>
@@ -74,6 +76,7 @@
 							</li>
 						</ul>
 					</div>
+					{% endblock %}
 				</div>
 
 				{% block footer  %}

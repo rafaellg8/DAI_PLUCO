@@ -1,9 +1,17 @@
-{% extends "index.html" %} {% block title %}Principal{% endblock %}
+{% extends "index.html" %}
+{% block title %}
+  {% if usuario %}
+    {{usuario}}
+  {% else %}
+    Principal
+    {% endif %}
+{% endblock %}
+
 {% block panelLateral %}
 <div class="sidebar">
   <a href="/" id="logo"><img src="/static/images/logo.png" alt="logo" width=90 height=90></a>
   <ul>
-    <li class="selected home">
+    <li class="home">
       <a href="/">Home</a>
     </li>
     <li class="about">
@@ -22,10 +30,16 @@
 </div>
 {% endblock %}
 {% block cabeceraTitulo %}
+{% if usuario %}
+  <div class="botonera">
+    <a href="/logout"><button>logout</button></a>
+  </div>
+{% else %}
 <div class="botonera">
-  <input type="button" name="login" value="Login"></input>
-  <input type="button" name="register" value="Register"></input>
+  <a href="/login"><button>login</button></a>
+  <a href="/register"><button>register</button></a>
 </div>
+{% endif %}
 <div>
   <h3><span class="beauty">PLUCO</span></h3>
   <p style="float: left;margin-right: 400px;margin-top: 20px">
@@ -34,10 +48,17 @@
 </div>
 {% endblock %}
 {% block articuloPrincipal %}
+{% if usuario %}
+  <div>
+    <h4>Bienvenido: </h4>
+    <h3>{{usuario}}</h3>
+  </div>
+{% else %}
 <div>
   <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
 
   <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
 
 </div>
+{% endif %}
 {% endblock %}
