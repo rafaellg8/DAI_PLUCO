@@ -2,12 +2,31 @@
 {% block cabecera %}
   {{ super() }}
      <style type="text/css">
-    {% block title %}Principal{% endblock %}
+    {% block title %}
+    {% if usuario %}
+     {{usuario}}
+    {%else%}
+      Principal
+    {% endif %}
+    {% endblock %}
     </style>
 {% endblock %}
 
     {% block encabezado %}
+    {% if usuario %}
+        Bienvenido {{usuario}}
+        {% block logos %}
+          {{super()}}
+        {% endblock %}
+        {% block github %}
+          {{super()}}
+        {% endblock %}
+        {% block logout %}
+          {{super()}}
+        {% endblock %}
+    {% else %}
       {{super()}}
+    {% endif %}
     {% endblock %}
 
       {% block br %}{% endblock %}

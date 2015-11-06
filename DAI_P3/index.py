@@ -19,6 +19,7 @@ from flask import request
 from flask import Flask
 from wtforms import form, Form
 import random
+import shelve
 from registration import RegistrationForm
 app = Flask(__name__)
 
@@ -32,7 +33,7 @@ Llama a render template y crea el archivo index a traves del template.
 def index():
     url_for('static',filename='style.css')
     url_for('static',filename='principal.html')
-    return render_template('principal.html')
+    return render_template('principal.html',usuario = None)
 
     #devuelve la pagina hola.html, y le pasa como parametro el nombre de usuario
 @app.route('/user/<user>')
@@ -49,7 +50,7 @@ Sino, ofrece la pagina de registros
 def register():
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-            return ('¡ Registro correcto!' % form.username.data)
+            return render_template('principal.html',usuario=form.username.data)
 
     return render_template('register.html',form=form)
 

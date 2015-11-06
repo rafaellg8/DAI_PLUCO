@@ -79,7 +79,7 @@ border-radius: 10px;
 border: dashed 1px blue;
 margin-top: 150px;
 /*Hacemos que el menu lateral se desplaze*/
-position: fixed;
+position: inherit;
 margin-bottom: 10px .footer;
 }
 body{
@@ -99,9 +99,4 @@ background-image: linear-gradient(30deg, #155799, #159957);
 border-radius: 5px;
 width: 100%;
 color: white;
-}
-
-dd{
-      float: left;
-      margin-left: 10px;
 }

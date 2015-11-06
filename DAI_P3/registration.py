@@ -17,24 +17,21 @@ Crea registros con campos asociados a cada entrada.
 :param: Form
 """
 class RegistrationForm(Form):
-      username = TextField('Nombre usuario',[validators.Length(min=5,max=30),validators.Required()])
+      username = TextField('Nombre usuario',[validators.Length(min=5,max=30),validators.required()])
       firstName = TextField('Primer apellido',[validators.Length(min=5,max=30)])
       secondName = TextField('Segundo apellido',[validators.Length(min=5,max=30)])
       email = EmailField('Direccion email',[validators.Length(min=6,max=50),validators.Email()])
       # match = re.search(r'\w+@\w+', str)
-      creditCard = IntegerField('Numero tarjeta Visa y 4 dígitos de control')
-      #validators.Regexp('\d{4}-\d{4}-\d{4}-\d{4}',message="Introduzca la #tarjeta separado por guiones ")
-      birthday = DateField('Fecha nacimiento: dd/mm/aa',format='%d-%m-%Y')
+      creditCard = TextField('Numero tarjeta Visa y 4 dígitos de control')
+      validators.Regexp(r'\d{4}-\d{4}-\d{4}-\d{4}',message="Introduzca la #tarjeta separado por guiones ")
+      birthday = DateField('Fecha nacimiento: dd/mm/aa',[validators.required()],format='%m/%d/%Y')
 
       address = TextAreaField('Direccion')
 
-      password = PasswordField('Contrasenia',[validators.Length(min=7),validators.Required(),validators.EqualTo('confirm',message='Contrasenias deben coincidir')])
+      password = PasswordField('Contrasenia',[validators.Length(min=7),validators.required(),validators.EqualTo('confirm',message='Contrasenias deben coincidir')])
       confirm = PasswordField('Repite contrasenia')
 
-      """payMethod = RadioField(
-        'Elija el metodo de pago?',
-        [validators.Required()],
-        paymethods=[('choice1', 'Credit Card'), ('choice2', 'Contrareembolso')], default='choice1'
-    )"""
 
-      accept_tos = BooleanField('acepto los términos',[validators.Required()])
+      paymethod = RadioField('Metodo Pago', choices=[('creditCard','Tarjeta Credito'),('efectivo','Pago Efectivo')])
+
+      accept_tos = BooleanField('acepto los términos',[validators.required()])

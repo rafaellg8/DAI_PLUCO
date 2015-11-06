@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
-      <head>{% block cabecera %}
+      {% block cabecera %}
+      <head>
             <link rel="stylesheet" href="/static/style.css"/>
             <title>PLUCO - {% block title %}{% endblock %}</title>
+      </head>
       {% endblock %}
-</head>
 <body>
-      <header class="encabezadoTitulo">{% block encabezado %}
+      {% block encabezado %}
+      <header class="encabezadoTitulo">
+            {% block logos%}
             <div>
                   <a href="/" alt="index">
                         <img src="/static/images/logo.png" width="160px" height="110" style="float: left;">
@@ -19,6 +22,9 @@
                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://github.com/rafaellg8/IV-PLUCO-RLG" data-text="PLUCO - Comprate conocimiento" data-hashtags="ETSIIT">Tweet</a>
                   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </div>
+            {% endblock %}
+
+            {% block loginUsuario %}
             <div class="login">
                   <form action="index.html" method="post" style="margin-top: 3px;margin-left: 25px;">
                         Login
@@ -27,6 +33,15 @@
                         <input value="login" type="button" font-size="4px"></input>
                   </form>
             </div>
+            {% endblock %}
+
+            {% block logout %}
+            <div class="logout">
+                <input type="button" name="logout" font-size="4px"></iput>
+            </div>
+            {% endblock %}
+
+            {% block github %}
             <div>
                   <a href="https://github.com/rafaellg8/IV-PLUCO-RLG" alt="PLUCO-RLG">
                         <img src="/static/images/github.jpeg" width="200px" height="120px" style="float: right;
@@ -34,8 +49,9 @@
                         margin-right: 10px">
                   </a>
             </div>
-      {% endblock %}
+            {% endblock %}
 </header>
+{% endblock %}
 <hr>{% block br %}{%endblock%}
       <nav class="menuLateral">  {% block menu %}
             <ul>
