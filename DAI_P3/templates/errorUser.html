@@ -1,10 +1,6 @@
 {% extends "index.html" %}
 {% block title %}
-  {% if usuario %}
-    {{usuario}}
-  {% else %}
-    Principal
-    {% endif %}
+    Error Login
 {% endblock %}
 
 {% block panelLateral %}
@@ -34,16 +30,12 @@
 </div>
 {% endblock %}
 {% block cabeceraTitulo %}
-{% if usuario %}
-  <div class="botonera">
-    <a href="/logout"><button>logout</button></a>
-  </div>
-{% else %}
+
 <div class="botonera">
   <a href="/login"><button>login</button></a>
   <a href="/register"><button>register</button></a>
 </div>
-{% endif %}
+
 <div>
   <h3><span class="beauty">PLUCO</span></h3>
   <p style="float: left;margin-right: 400px;margin-top: 20px">
@@ -52,17 +44,16 @@
 </div>
 {% endblock %}
 {% block articuloPrincipal %}
-{% if usuario %}
+
   <div>
-    <h4>Bienvenido: </h4>
-    <h3>{{usuario}}</h3>
+    <h4>ERROR: </h4>
+    <h4>Clave Incorrecta o Usuario Inexistente</h4>
   </div>
-{% else %}
+
 <div>
-  <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
+  <p>Vuelva a pulsar Login o Registrese si no lo está. Gracias.</p>
 
   <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
 
 </div>
-{% endif %}
 {% endblock %}

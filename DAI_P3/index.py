@@ -54,14 +54,18 @@ Manejando sesiones.
 def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
-        return redirect(url_for('index'))
-    return '''
-            <form action="" method="post">
-                <p><input type=text name=username>
-                <p><input type=password name=password>
-                <p><input type=submit value=Login>
-            </form>
-           '''
+        #Comprobar si el usuario existe, si no existe, redireccionamos a la pagina de error de usuario
+        form = RegistrationForm()
+        if (form.checkuser(request.form['username'],request.form['password'])):
+            return redirect(url_for('index'))
+        else:
+            return render_template('errorUser.html',usuario = None)
+
+    #Mostrar el login si no se ha hecho aún el POST
+    return render_template('login.html',usuario = None)
+
+
+
 """
 Controlador logout
 Manejo de sesiones
@@ -84,28 +88,10 @@ Sino, ofrece la pagina de registros
 def register():
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-            databases(form);
+            form.databases()
             return render_template('hijo.html',usuario=form.username.data)
 
     return render_template('register.html',form=form)
-
-def databases(form):
-    #Creamos el fichero que contendrá la base de datos, cada usuario tiene la suya asociada
-    db = anydbm.open('databases/'+str(form.username.data),'c')
-    #Introducimos en la base de datos todos los datos de los usuarios
-    db["username"] = (str(form.username.data))
-    db["name"] = (str(form.name.data))
-    db["firstName"] = (str(form.firstName.data))
-    db["secondName"] = (str(form.secondName.data))
-    db["email"] = (str(form.email.data))
-    db["creditCard"] = (str(form.creditCard.data))
-    db["birthday"] = (str(form.birthday.data))
-    db["address"] = (str(form.address.data))
-    db["password"] = (str(form.password.data))
-    db["confirm"] = (str(form.confirm.data))
-
-    print db["username"]
-    db.close()
 
 @app.route('/contact')
 def contact():

@@ -15,7 +15,11 @@
       <a href="/">Home</a>
     </li>
     <li class="about">
-      <a href="https://www.github.com/rafaellg8/IV-PLUCO-RLG">About</a>
+      {% if usuario %}
+      <a href="/perfil">Perfil</a>
+      {% else %}
+      <a href="https://wwww.github.com/rafaellg8">About</a>
+      {% endif %}
     </li>
     <li class="projects">
       <a href="https://www.github.com/rafaellg8/DAI_PLUCO">Projects</a>
