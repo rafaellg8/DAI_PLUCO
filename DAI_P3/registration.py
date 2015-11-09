@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Registro de datos y exportación a dbm
+"""
 import re
+import anydbm
 from wtforms import BooleanField
 from wtforms import DateField
 from wtforms import Form
@@ -17,14 +21,17 @@ Crea registros con campos asociados a cada entrada.
 :param: Form
 """
 class RegistrationForm(Form):
+
+
       username = TextField('Nombre usuario',[validators.Length(min=5,max=30),validators.required()])
+
       name = TextField('Nombre ',[validators.Length(min=5,max=30),validators.required()])
       firstName = TextField('Primer apellido',[validators.Length(min=5,max=30)])
       secondName = TextField('Segundo apellido',[validators.Length(min=5,max=30)])
       email = EmailField('Direccion email',[validators.Length(min=6,max=50),validators.Email()])
       # match = re.search(r'\w+@\w+', str)
-      creditCard = TextField('Numero tarjeta Visa y 4 dígitos de control')
-      validators.Regexp(r'\d{4}-\d{4}-\d{4}-\d{4}',message="Introduzca la #tarjeta separado por guiones ")
+      creditCard = TextField('Numero tarjeta Visa y 4 dígitos de control',[
+      validators.Regexp(r'\d{4}-\d{4}-\d{4}-\d{4}',message="Introduzca la #tarjeta separado por guiones")])
       birthday = DateField('Fecha nacimiento: dd/mm/aa',[validators.required()],format='%m/%d/%Y')
 
       address = TextAreaField('Direccion')
