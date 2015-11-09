@@ -22,7 +22,7 @@ Crea registros con campos asociados a cada entrada.
 """
 class RegistrationForm(Form):
 
-
+      #Generamos todos los campos que necesitamos
       username = TextField('Nombre usuario',[validators.Length(min=5,max=30),validators.required()])
 
       name = TextField('Nombre ',[validators.Length(min=5,max=30),validators.required()])
@@ -43,3 +43,34 @@ class RegistrationForm(Form):
       paymethod = RadioField('Metodo Pago', choices=[('creditCard','Tarjeta Credito'),('efectivo','Pago Efectivo')])
 
       accept_tos = BooleanField('acepto los términos',[validators.required()])
+
+      #Funcion que crea las bases de datos con el nombre usuario
+      def databases(self):
+          form = self
+          #Creamos el fichero que contendrá la base de datos, cada usuario tiene la suya asociada
+          db = anydbm.open('databases/'+str(form.username.data),'c')
+          #Introducimos en la base de datos todos los datos de los usuarios
+          db["username"] = (str(form.username.data))
+          db["name"] = (str(form.name.data))
+          db["firstName"] = (str(form.firstName.data))
+          db["secondName"] = (str(form.secondName.data))
+          db["email"] = (str(form.email.data))
+          db["creditCard"] = (str(form.creditCard.data))
+          db["birthday"] = (str(form.birthday.data))
+          db["address"] = (str(form.address.data))
+          db["password"] = (str(form.password.data))
+          db["confirm"] = (str(form.confirm.data))
+          print db["username"]
+          db.close()
+
+     #Comprobamos si existe la base de datos, es decir existe usuario, y que la contraseña asociada es correcta
+      def checkuser(self,user,passw):
+          try:
+             db = anydbm.open('databases/'+str(user),'r')
+          except:
+            return (False)
+
+          if (db["password"]) == passw:
+            return (True)
+          else:
+            return (False)
