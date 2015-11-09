@@ -3,7 +3,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	{% block title %}
 	<title>Contact - Origin Architects Website Template</title>
+	{% endblock %}
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
@@ -12,6 +14,7 @@
 	</div>
 	<div class="page">
 		<div class="contact-page">
+			{% block menuLateral %}
 			<div class="sidebar">
 				<a href="index.html" id="logo"><img src="images/logo.png" alt="logo"></a>
 				<ul>
@@ -31,13 +34,32 @@
 						<a href="contact.html">Contact</a>
 					</li>
 				</ul>
-				<div class="connect">
-					<a href="http://freewebsitetemplates.com/go/facebook/" id="fb">facebook</a> <a href="http://freewebsitetemplates.com/go/twitter/" id="twitter">twitter</a> <a href="http://freewebsitetemplates.com/go/googleplus/" id="googleplus">google+</a> <a href="http://freewebsitetemplates.com/go/youtube/" id="youtube">youtube</a>
-				</div>
 			</div>
+			{% endblock %}
+
+			{% block cabeceraTitulo %}
+			{% if usuario %}
+			  <div class="botonera" style="margin-top: 50px">
+			    <a href="/logout"><button>logout</button></a>
+			  </div>
+			{% else %}
+			<div class="botonera" style="margin-top: 50px">
+			  <a href="/login"><button>login</button></a>
+			  <a href="/register"><button>register</button></a>
+			</div>
+			{% endif %}
+			<div class="content-home">
+			  <h3><span class="beauty">PLUCO</span></h3>
+			  <p style="float: left;margin-right: 400px;margin-top: 20px">
+			    Plataforma Universitaria Compartición Conocimiento
+			  </p>
+			</div>
+			{% endblock %}
+
 			<div class="body">
 				<div class="content-contact">
 					<div>
+						{% block cuerpo %}
 						<div>
 							<h3>Contact</h3>
 							<p>
@@ -52,6 +74,8 @@
 								<input type="submit" class="submit" value="Submit Message">
 							</form>
 						</div>
+						{% endblock %}
+						{% block sidebar %}
 						<div class="sidebar">
 							<h3>Contact Info</h3>
 							<span>Address</span>
@@ -67,8 +91,10 @@
 								Mondays to Fridays <br> 9:00 am to 5:00 pm <br><br> Saturdays <br> 9:00 am to 12:00 pm <br><br> Sundays <br> By appointment only
 							</p>
 						</div>
+						{% endblock %}
 					</div>
 				</div>
+				{% block footer %}
 				<div class="footer">
 					<p>
 						&#169; 2023 Origins Interior Architects
@@ -91,6 +117,7 @@
 						</li>
 					</ul>
 				</div>
+				{% endblock %}
 			</div>
 		</div>
 	</div>

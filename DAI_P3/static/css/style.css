@@ -85,22 +85,22 @@ p a:hover {
 .page .about-page {
 	background:url(../images/bg-about.png) repeat-y right top;
 	overflow:hidden;
-	min-height:1440px;
+	/*min-height:1440px;*/
 }
 .page .project-page {
 	background:url(../images/bg-project.png) repeat-y right top;
 	overflow:hidden;
-	min-height:1440px;
+	/*min-height:1440px;*/
 }
 .page .blog-page {
 	background:url(../images/bg-blog.png) repeat-y right top;
 	overflow:hidden;
-	min-height:1440px;
+	/*min-height:1440px;*/
 }
 .page .contact-page {
 	background:url(../images/bg-contact.png) repeat-y right top;
 	overflow:hidden;
-	min-height:1440px;
+	/*min-height:1440px;*/
 }
 /*------------------------- Fonts ------------------------*/
 @font-face {
@@ -119,6 +119,8 @@ p a:hover {
 .sidebar a#logo {
 	display:block;
 	margin:37px 0 0 18px;
+	width: 100px;
+	height: 50px;
 }
 .sidebar ul {
 	list-style:none;
@@ -126,7 +128,7 @@ p a:hover {
 	padding:0;
 }
 .sidebar ul li {
-	min-height:0!important;
+	/*min-height:0!important;*/
 	margin-top:-4px;
 }
 .sidebar ul li a {
@@ -1340,6 +1342,7 @@ dd{
 	font-size: 12px;
 	margin-left: 10px;
 }
+
 
 dt{
 	font-family: "Myriad Pro","Gill Sans","Gill Sans MT",Calibri,sans-serif;

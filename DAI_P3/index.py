@@ -33,13 +33,46 @@ Llama a render template y crea el archivo index a traves del template.
 def index():
     url_for('static',filename='style.css')
     url_for('static',filename='hijo.html')
-    return render_template('hijo.html',usuario = None)
+    if 'username' in session:
+        session['recentpage']='index';
+        return render_template('hijo.html',usuario = (session['username']),recentpage = (session['recentpage']))
+    else:
+        return render_template('hijo.html',usuario = None)
 
     #devuelve la pagina hola.html, y le pasa como parametro el nombre de usuario
 @app.route('/user/<user>')
 def hello_world(user=None):
     #return render_template('hola.html', usuario=user)
     return 'Bienvenido %s' % user
+
+"""
+Controlador de login.
+Manejando sesiones.
+"""
+@app.route('/login',methods=['GET','POST'])
+def login():
+    if request.method == 'POST':
+        session['username'] = request.form['username']
+        return redirect(url_for('index'))
+    return '''
+            <form action="" method="post">
+                <p><input type=text name=username>
+                <p><input type=password name=password>
+                <p><input type=submit value=Login>
+            </form>
+           '''
+"""
+Controlador logout
+Manejo de sesiones
+"""
+@app.route('/logout')
+def logout():
+        #remove the username from the session
+        session.pop('username',None)
+        return redirect(url_for('index'))
+
+#secret key
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 """
 Controlador registro.
@@ -53,6 +86,18 @@ def register():
             return render_template('hijo.html',usuario=form.username.data)
 
     return render_template('register.html',form=form)
+
+@app.route('/contact')
+def contact():
+    if 'username' in session:
+        session['recentpage']='index';
+        return render_template('autor.html',usuario = (session['username']),recentpage = (session['recentpage']))
+    else:
+        return render_template('autor.html',usuario = None,recentpage = None)
+
+@app.route('/recentpage')
+def recentpage():
+    return redirect(url_for(session['recentpage'],usuario = (session['username']),recentpage = (session['recentpage'])))
 
 """
 Gestion de errores, pagina no encontrada
