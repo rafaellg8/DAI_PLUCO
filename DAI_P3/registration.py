@@ -32,7 +32,7 @@ class RegistrationForm(Form):
       # match = re.search(r'\w+@\w+', str)
       creditCard = TextField('Numero tarjeta Visa y 4 dígitos de control',[
       validators.Regexp(r'\d{4}-\d{4}-\d{4}-\d{4}',message="Introduzca la #tarjeta separado por guiones")])
-      birthday = DateField('Fecha nacimiento: dd/mm/aa',[validators.required()],format='%m/%d/%Y')
+      birthday = DateField('Fecha nacimiento: aa-mm-dd',[validators.required()],format='%Y/%m/%d')
 
       address = TextAreaField('Direccion')
 
@@ -74,3 +74,22 @@ class RegistrationForm(Form):
             return (True)
           else:
             return (False)
+
+      def getData(self,form,user):
+          try:
+            db = anydbm.open('databases/'+str(user),'c')
+          except:
+            return (False)
+
+          form.username.data = (db["username"])
+          form.name.data = (db["name"])
+          form.firstName.data = (db["firstName"])
+          form.secondName.data = (db["secondName"])
+          form.email.data = (db["email"])
+          form.creditCard.data = (db["creditCard"])
+          form.birthday.data = (db["birthday"])
+          form.address.data = (db["address"])
+          form.password.data = (db["password"])
+          form.confirm.data = (db["confirm"])
+
+          return form

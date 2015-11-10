@@ -93,6 +93,25 @@ def register():
 
     return render_template('register.html',form=form)
 
+"""
+Gestion Perfil Usuario
+"""
+@app.route('/perfil',methods=['GET','POST'])
+def perfil():
+    form = RegistrationForm()
+    #Si es el usuario el que cambia datos, reedita y guarda
+    if 'username' in session and (request.method=='POST' and form.validate()):
+        form.databases() #guarda los cambios
+        form = form.getData(form,session['username'])
+        #Obten los cambios y muéstralos
+        return render_template('perfil.html',usuario=session['username'],form=form)
+    if 'username' in session:
+        form = form.getData(form,session['username'])
+        return render_template('perfil.html',usuario=session['username'],form=form)
+    else:
+        return render_template('hijo.html',usuario = None)
+    
+
 @app.route('/contact')
 def contact():
     if 'username' in session:
@@ -101,9 +120,14 @@ def contact():
     else:
         return render_template('autor.html',usuario = None,recentpage = None)
 
+"""
+Paginas recientes
+"""
 @app.route('/recentpage')
 def recentpage():
     return redirect(url_for(session['recentpage'],usuario = (session['username']),recentpage = (session['recentpage'])))
+
+
 
 """
 Gestion de errores, pagina no encontrada
