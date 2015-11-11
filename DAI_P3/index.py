@@ -87,10 +87,12 @@ Sino, ofrece la pagina de registros
 @app.route('/register',methods=['GET', 'POST'])
 def register():
     form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST' and form.validate() and ('username' in session):
+            form.databases()
+            return render_template('perfil.html',usuario=form.username.data,form=form)
+    elif request.method == 'POST' and form.validate():
             form.databases()
             return render_template('hijo.html',usuario=form.username.data)
-
     return render_template('register.html',form=form)
 
 """
@@ -98,14 +100,9 @@ Gestion Perfil Usuario
 """
 @app.route('/perfil',methods=['GET','POST'])
 def perfil():
-    form = RegistrationForm()
-    #Si es el usuario el que cambia datos, reedita y guarda
-    if 'username' in session and (request.method=='POST' and form.validate()):
-        form.databases() #guarda los cambios
-        form = form.getData(form,session['username'])
-        #Obten los cambios y muéstralos
-        return render_template('perfil.html',usuario=session['username'],form=form)
     if 'username' in session:
+        #llamamos objeto clase
+        form = RegistrationForm()
         form = form.getData(form,session['username'])
         return render_template('perfil.html',usuario=session['username'],form=form)
     else:

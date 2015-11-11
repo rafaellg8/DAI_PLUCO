@@ -15,6 +15,7 @@ from wtforms import validators
 from wtforms import IntegerField
 from wtforms import RadioField
 from wtforms.fields.html5 import EmailField
+from wtforms.fields.html5 import DateField
 """
 Clase principal para los registros.
 Crea registros con campos asociados a cada entrada.
@@ -32,7 +33,7 @@ class RegistrationForm(Form):
       # match = re.search(r'\w+@\w+', str)
       creditCard = TextField('Numero tarjeta Visa y 4 dígitos de control',[
       validators.Regexp(r'\d{4}-\d{4}-\d{4}-\d{4}',message="Introduzca la #tarjeta separado por guiones")])
-      birthday = DateField('Fecha nacimiento: aa-mm-dd',[validators.required()],format='%Y/%m/%d')
+      birthday = DateField('Fecha nacimiento: aa-mm-dd',[validators.required()])
 
       address = TextAreaField('Direccion')
 

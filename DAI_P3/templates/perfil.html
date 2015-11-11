@@ -1,22 +1,11 @@
-{% extends "index.html" %}{% block title %}Perfil{% endblock %}
+{% extends "index.html" %}{% block title %}Perfil{{usuario}}{% endblock %}
 {% block cabeceraTitulo %}
-{% if usuario %}
   <div class="botonera">
     {{usuario}}
   <a href="/logout">
     <button>logout</button>
   </a>
 </div>
-{% else %}
-<div class="botonera">
-  <a href="/login">
-    <button>login</button>
-  </a>
-  <a href="/register">
-    <button>register</button>
-  </a>
-</div>
-{% endif %}
 <div>
   <h3><span class="beauty">PLUCO</span></h3>
   <p style="float: left;margin-right: 400px;margin-top: 20px">
@@ -37,7 +26,9 @@
   </dd>
 {% endmacro %}
 {% block articuloPrincipal %}
-  <form method=post action='/register'>
+  <h2> Datos usuario:  {{usuario}}</h2>
+  <!--si se completa la accion llama a register-->
+  <form method=post action='/register' class="edicion">
     <dt>Nombre usuario <input type=text name="username" value={{form.username.data}}>
     <br>
     <dt>Nombre <input type=text name="name" value={{form.name.data}}>
@@ -63,16 +54,17 @@
       <br><br>
      <dt>Número tarjeta <input type=text name="creditCard" value={{form.creditCard.data}}>
       <br>
-      <dt>Fecha nacimiento <input type=data  name="birthday" value={{form.birthday.data}}>
+      <dt>Fecha nacimiento <input type=date  name="birthday" value={{form.birthday.data}}>
       <br>
       <dt>Dirección <input type=text name="address" value={{form.address.data}}>
       <br>
       <br>Aceptar terminos servicio<input type="checkbox" name="accept_tos" required=true>
       
     </dt>
-    <p><input type=submit value=Registrarse>
+    <p><input type=submit value=Editar campos>
     </form>
   {% endblock %}
 
   {% block extra %}
   {% endblock %}
+

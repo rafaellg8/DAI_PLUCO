@@ -1349,3 +1349,9 @@ dt{
 	font-size: 12px;
 	margin-left: 10px;
 }
+
+.edicion{
+	height: 600px;
+	width: 300px;
+	margin-left: 20px;
+}
