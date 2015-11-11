@@ -19,10 +19,13 @@ from flask import request
 from flask import Flask
 from wtforms import form, Form
 import random
-import shelve
+import configdb
 from registration import RegistrationForm
 import anydbm
+import pymongo
 app = Flask(__name__)
+#variable connection
+conn = configdb.Database()
 
 """
 Ruta principal, acceso al index
@@ -89,9 +92,11 @@ def register():
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate() and ('username' in session):
             form.databases()
+            conn.insertData(form)
             return render_template('perfil.html',usuario=form.username.data,form=form)
     elif request.method == 'POST' and form.validate():
             form.databases()
+            conn.insertData(form)
             return render_template('hijo.html',usuario=form.username.data)
     return render_template('register.html',form=form)
 

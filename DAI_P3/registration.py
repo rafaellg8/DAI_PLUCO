@@ -16,6 +16,8 @@ from wtforms import IntegerField
 from wtforms import RadioField
 from wtforms.fields.html5 import EmailField
 from wtforms.fields.html5 import DateField
+
+
 """
 Clase principal para los registros.
 Crea registros con campos asociados a cada entrada.
@@ -47,6 +49,7 @@ class RegistrationForm(Form):
 
       #Funcion que crea las bases de datos con el nombre usuario
       def databases(self):
+        
           form = self
           #Creamos el fichero que contendrá la base de datos, cada usuario tiene la suya asociada
           db = anydbm.open('databases/'+str(form.username.data),'c')
@@ -63,7 +66,8 @@ class RegistrationForm(Form):
           db["confirm"] = (str(form.confirm.data))
           print db["username"]
           db.close()
-
+          
+            
      #Comprobamos si existe la base de datos, es decir existe usuario, y que la contraseña asociada es correcta
       def checkuser(self,user,passw):
           try:
