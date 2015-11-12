@@ -4,12 +4,108 @@
 		"selected_items":
 		[
 			[
-				"margin",
-				"margin-bottom"
+				"me",
+				"method"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"hei",
+				"height"
+			],
+			[
+				"s",
+				"style	Attr"
+			],
+			[
+				"us",
+				"usuario"
+			],
+			[
+				"art",
+				"articuloPrincipal"
+			],
+			[
+				"data",
+				"databases"
+			],
+			[
+				"any",
+				"anydbm〔module〕"
+			],
+			[
+				"Re",
+				"RegistrationForm〔module〕"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"redi",
+				"redirect"
 			],
 			[
 				"r",
-				"right"
+				"register〔function〕"
+			],
+			[
+				"p",
+				"prueba"
+			],
+			[
+				"total",
+				"total_descifrado"
+			],
+			[
+				"st",
+				"start_time"
+			],
+			[
+				"des",
+				"descifrado_time"
+			],
+			[
+				"ci",
+				"cifrado_time"
+			],
+			[
+				"clav",
+				"claveM"
+			],
+			[
+				"cl",
+				"claveM"
+			],
+			[
+				"te",
+				"textoplano"
+			],
+			[
+				"en",
+				"encode('hex"
+			],
+			[
+				"re",
+				"repr"
+			],
+			[
+				"ar",
+				"archivoCifrado"
+			],
+			[
+				"cla",
+				"clave"
+			],
+			[
+				"tex",
+				"textocifrado"
+			],
+			[
+				"margin",
+				"margin-bottom"
 			],
 			[
 				"fl",
@@ -28,16 +124,8 @@
 				"Email〔class〕"
 			],
 			[
-				"me",
-				"message"
-			],
-			[
 				"Req",
 				"required"
-			],
-			[
-				"te",
-				"textbox"
 			],
 			[
 				"L",
@@ -68,10 +156,6 @@
 				"height"
 			],
 			[
-				"mar",
-				"margin-top: 〔property〕"
-			],
-			[
 				"wid",
 				"width"
 			],
@@ -96,10 +180,18 @@
 	"buffers":
 	[
 		{
-			"file": "/home/rafaellg8/Desktop/DAI_P3/templates/principal.html",
+			"file": "DAI_P3/registration.py",
 			"settings":
 			{
-				"buffer_size": 453,
+				"buffer_size": 3888,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "DAI_P3/configdb.py",
+			"settings":
+			{
+				"buffer_size": 537,
 				"line_ending": "Unix"
 			}
 		},
@@ -107,39 +199,7 @@
 			"file": "DAI_P3/index.py",
 			"settings":
 			{
-				"buffer_size": 1773,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "DAI_P3/templates/index.html",
-			"settings":
-			{
-				"buffer_size": 4800,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "DAI_P3/registration.py",
-			"settings":
-			{
-				"buffer_size": 1766,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "DAI_P3/templates/register.html",
-			"settings":
-			{
-				"buffer_size": 1480,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "DAI_P3/static/style.css",
-			"settings":
-			{
-				"buffer_size": 2158,
+				"buffer_size": 4148,
 				"line_ending": "Unix"
 			}
 		}
@@ -151,10 +211,42 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 308.0,
-		"last_filter": "fix",
+		"height": 400.0,
+		"last_filter": "remo",
 		"selected_items":
 		[
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"bea",
+				"HTMLBeautify"
+			],
 			[
 				"fix",
 				"Python Fix Imports"
@@ -162,10 +254,6 @@
 			[
 				"beau",
 				"HTMLBeautify"
-			],
-			[
-				"ins",
-				"Package Control: Install Package"
 			],
 			[
 				"python",
@@ -176,20 +264,12 @@
 				"Package Control: Install Package"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"set syntax py",
 				"Set Syntax: Python (Django)"
 			],
 			[
 				"git",
 				"Set Syntax: Git"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
 			],
 			[
 				"install ",
@@ -234,14 +314,6 @@
 			[
 				"remov",
 				"Package Control: Remove Package"
-			],
-			[
-				"remove",
-				"Package Control: Remove Package"
-			],
-			[
-				"instal",
-				"Package Control: Install Package"
 			]
 		],
 		"width": 601.0
@@ -266,13 +338,32 @@
 	"expanded_folders":
 	[
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/class",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/databases",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/images",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates"
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/css"
 	],
 	"file_history":
 	[
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/login.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/autor.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/errorUser.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/hijo.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/perfil.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/index.py",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/css/style.css",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/register.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/index.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/doc/index.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/IV/IV-PLUCO-RLG/Makefile",
+		"/home/rafaellg8/Documentos/GII/Cuarto/IV/IV-PLUCO-RLG/plucoRLG/index.py",
+		"/home/rafaellg8/Documentos/GII/Cuarto/IV/IV-PLUCO-RLG/test/test.py",
+		"/home/rafaellg8/Desktop/spsi.py",
+		"/home/rafaellg8/Desktop/prueba",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/style.css",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/hijo.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/originarchitectswebsitetemplate/index.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/registration.py",
+		"/home/rafaellg8/Desktop/DAI_P3/templates/principal.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/class/registration.py",
 		"/home/rafaellg8/Desktop/DAI_P3/templates/index.htm",
 		"/home/rafaellg8/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
@@ -284,13 +375,14 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 94.0,
 		"where_history":
 		[
+			"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3"
 		]
 	},
 	"find_state":
@@ -298,6 +390,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"():\n",
+			"dt",
+			"str",
+			"password",
+			"wwww",
+			"dl",
+			"First Name",
+			"render_field",
+			" render_field",
+			"str",
+			"db",
+			"(str",
+			"= (str(form.username.data",
+			"mysecretpassword12345678",
+			"MODE_CBC",
+			"mysecret",
+			"logo",
+			"p",
+			"images",
 			"textbox",
 			"Company"
 		],
@@ -307,6 +418,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"www",
+			""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -317,55 +430,85 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/rafaellg8/Desktop/DAI_P3/templates/principal.html",
+					"file": "DAI_P3/registration.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 453,
+						"buffer_size": 3888,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								310,
-								310
+								115,
+								115
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/Jinja2/Syntaxes/HTML (Jinja2).tmLanguage",
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 48.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "DAI_P3/index.py",
+					"file": "DAI_P3/configdb.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1773,
+						"buffer_size": 537,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1189,
-								1189
+								527,
+								527
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"open_with_edit": true,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "DAI_P3/index.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4148,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1414,
+								1414
 							]
 						],
 						"settings":
@@ -376,132 +519,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 273.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "DAI_P3/templates/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4800,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								341,
-								341
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 6,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "DAI_P3/registration.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1766,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1221,
-								1221
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "DAI_P3/templates/register.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1480,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								718,
-								718
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"open_with_edit": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 39.0,
+						"translation.y": 576.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "DAI_P3/static/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2158,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2158,
-								2158
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 858.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -584,7 +605,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 128.0,
+	"side_bar_width": 186.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

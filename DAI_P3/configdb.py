@@ -21,7 +21,7 @@ class Database():
             def insertData(self,form):
                  #como da problemos con date time, convertimos primero la fecha
                  date = datetime.combine(form.birthday.data,datetime.min.time())
-                 doc = {"username": form.username.data,"firstName": form.firstName.data,"secondName": form.secondName.data,"email": form.email.data,"creditCard": form.creditCard.data,"birthday": date,"address": form.address.data,"confirm": form.confirm.data,"payMethod": form.paymethod.data}
+                 doc = {"username": form.username.data,"firstName": form.firstName.data,"secondName": form.secondName.data,"email": form.email.data,"creditCard": form.creditCard.data,"birthday": date,"address": form.address.data,"password": form.password.data,"confirm": form.confirm.data,"payMethod": form.paymethod.data}
                  #insertamos los datos en el documento
                  
                  self.collection.insert(doc)
