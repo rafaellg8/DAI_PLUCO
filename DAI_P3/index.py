@@ -59,7 +59,7 @@ def login():
         session['username'] = request.form['username']
         #Comprobar si el usuario existe, si no existe, redireccionamos a la pagina de error de usuario
         form = RegistrationForm()
-        if (form.checkuser(request.form['username'],request.form['password'])):
+        if (form.checkuserMongo(conn,request.form['username'],request.form['password'])):
             return redirect(url_for('index'))
         else:
             return render_template('errorUser.html',usuario = None)
@@ -90,14 +90,24 @@ Sino, ofrece la pagina de registros
 @app.route('/register',methods=['GET', 'POST'])
 def register():
     form = RegistrationForm(request.form)
+    #si el usuario esta registrado guardamos los datos
     if request.method == 'POST' and form.validate() and ('username' in session):
-            form.databases()
-            conn.insertData(form)
+            #guardamos los datos nuevos o editados
+            form.databasesMongoUpdate(conn,session['username'])
+            #por si cambia el nombre de usuario
+            session['username']=form.username.data
+            #conn.insertData(form)
             return render_template('perfil.html',usuario=form.username.data,form=form)
     elif request.method == 'POST' and form.validate():
-            form.databases()
-            conn.insertData(form)
+            #si se ha accedido desde una sesion la borramos
+            return ('/logout')
+            #grabamos los datos
+            form.databasesMongo(conn)
             return render_template('hijo.html',usuario=form.username.data)
+
+    #si se pulsa desde un usuario loggeado
+    logout()
+    #devolvemos la pagina de registro
     return render_template('register.html',form=form)
 
 """
@@ -108,7 +118,8 @@ def perfil():
     if 'username' in session:
         #llamamos objeto clase
         form = RegistrationForm()
-        form = form.getData(form,session['username'])
+        #form = form.getData(form,session['username'])
+        form = form.getDataMongo(form,session['username'],conn)
         return render_template('perfil.html',usuario=session['username'],form=form)
     else:
         return render_template('hijo.html',usuario = None)

@@ -5,6 +5,7 @@ Registro de datos y exportación a dbm
 """
 import re
 import anydbm
+import configdb
 from wtforms import BooleanField
 from wtforms import DateField
 from wtforms import Form
@@ -66,8 +67,23 @@ class RegistrationForm(Form):
           db["confirm"] = (str(form.confirm.data))
           print db["username"]
           db.close()
+
           
-            
+      def databasesMongo(self,conn):
+          form = self
+          try:
+            #insertamos los datos
+            conn.insertData(form)
+          except ValueError:
+            return ("Error coleccion inexistente imposible registrar datos")
+
+      def databasesMongoUpdate(self,conn,username):
+          form = self
+          try:
+            #insertamos los datos
+            conn.updateData(form)
+          except ValueError:
+            return ("Error coleccion inexistente imposible registrar datos")
      #Comprobamos si existe la base de datos, es decir existe usuario, y que la contraseña asociada es correcta
       def checkuser(self,user,passw):
           try:
@@ -82,9 +98,45 @@ class RegistrationForm(Form):
 
       def getData(self,form,user):
           try:
+
             db = anydbm.open('databases/'+str(user),'c')
           except:
             return (False)
+
+          form.username.data = (db["username"])
+          form.name.data = (db["name"])
+          form.firstName.data = (db["firstName"])
+          form.secondName.data = (db["secondName"])
+          form.email.data = (db["email"])
+          form.creditCard.data = (db["creditCard"])
+          form.birthday.data = (db["birthday"])
+          form.address.data = (db["address"])
+          form.password.data = (db["password"])
+          form.confirm.data = (db["confirm"])
+
+          return form
+
+      #comprobamos si exsite el usuario en Mongodb
+      def checkuserMongo(self,connection,user,passw):
+          try:
+            re =  connection.getUserLogin()
+            return re
+          except:
+            return ("Error login")
+
+
+
+      #nos pasan la conexion y devolvemos formulario con los datos asociados
+      def getDataMongo(self,form,user,connection):
+          #obtenemos la coleccion del usuario
+          try:
+            collection = connection.getCollection()
+            #obtenemos los datos del usuario
+            db = connection.getUserData(user)
+
+          except ValueError:
+            return ("Error coleccion inexistente o usuario no encontrado")
+
 
           form.username.data = (db["username"])
           form.name.data = (db["name"])
