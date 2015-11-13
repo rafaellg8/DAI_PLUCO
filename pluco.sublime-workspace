@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"lo",
+				"logout〔function〕"
+			],
+			[
+				"log",
+				"logout"
+			],
+			[
+				"se",
+				"sesion"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"find",
+				"find_one({\"username\":username"
+			],
+			[
+				"conn",
+				"connection"
+			],
+			[
+				"pa",
+				"password"
+			],
+			[
+				"usr",
+				"username"
+			],
+			[
+				"col",
+				"collection"
+			],
+			[
+				"q",
+				"query['name"
+			],
+			[
+				"date",
+				"datetime〔module〕"
+			],
+			[
+				"dat",
+				"datetime"
+			],
+			[
+				"r",
+				"return"
+			],
+			[
 				"me",
 				"method"
 			],
@@ -40,16 +92,8 @@
 				"RegistrationForm〔module〕"
 			],
 			[
-				"user",
-				"username"
-			],
-			[
 				"redi",
 				"redirect"
-			],
-			[
-				"r",
-				"register〔function〕"
 			],
 			[
 				"p",
@@ -180,26 +224,26 @@
 	"buffers":
 	[
 		{
-			"file": "DAI_P3/registration.py",
+			"file": "/home/rafaellg8/Documentos/GII/Cuarto/IV/python-getting-started/plucorlg/registration.py",
 			"settings":
 			{
-				"buffer_size": 3888,
+				"buffer_size": 5582,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "DAI_P3/configdb.py",
+			"file": "/home/rafaellg8/Documentos/GII/Cuarto/IV/python-getting-started/plucorlg/index.py",
 			"settings":
 			{
-				"buffer_size": 537,
+				"buffer_size": 4692,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "DAI_P3/index.py",
+			"file": "/home/rafaellg8/Documentos/GII/Cuarto/IV/python-getting-started/plucorlg/configdb.py",
 			"settings":
 			{
-				"buffer_size": 4148,
+				"buffer_size": 5093,
 				"line_ending": "Unix"
 			}
 		}
@@ -337,22 +381,26 @@
 	},
 	"expanded_folders":
 	[
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/databases",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/css"
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/images",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates"
 	],
 	"file_history":
 	[
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/configdb.py",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/hijo.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/index.html",
+		"/home/rafaellg8/Documentos/GII/Cuarto/IV/python-getting-started/Procfile",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/index.py",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/registration.py",
+		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/P2/idenx_flask.py",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/login.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/autor.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/errorUser.html",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/hijo.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/perfil.html",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/index.py",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/css/style.css",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/register.html",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/templates/index.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/doc/index.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/IV/IV-PLUCO-RLG/Makefile",
 		"/home/rafaellg8/Documentos/GII/Cuarto/IV/IV-PLUCO-RLG/plucoRLG/index.py",
@@ -362,7 +410,6 @@
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/static/style.css",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/hijo.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/originarchitectswebsitetemplate/index.html",
-		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/registration.py",
 		"/home/rafaellg8/Desktop/DAI_P3/templates/principal.html",
 		"/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P3/class/registration.py",
 		"/home/rafaellg8/Desktop/DAI_P3/templates/index.htm",
@@ -375,7 +422,7 @@
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -390,6 +437,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"bg-projects.jpg",
+			"session.pop",
+			"\"",
+			"databasesMongo",
+			"     \n",
+			"form",
+			"(",
+			"\"",
+			"))",
+			"str",
+			")",
+			"str",
+			"conn = Database(pymongo.MongoClient())",
 			"():\n",
 			"dt",
 			"str",
@@ -418,6 +478,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"github.jpeg",
 			"www",
 			""
 		],
@@ -435,30 +496,29 @@
 			[
 				{
 					"buffer": 0,
-					"file": "DAI_P3/registration.py",
+					"file": "/home/rafaellg8/Documentos/GII/Cuarto/IV/python-getting-started/plucorlg/registration.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3888,
+						"buffer_size": 5582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								115,
-								115
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 48.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -466,49 +526,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "DAI_P3/configdb.py",
+					"file": "/home/rafaellg8/Documentos/GII/Cuarto/IV/python-getting-started/plucorlg/index.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 537,
+						"buffer_size": 4692,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								527,
-								527
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"open_with_edit": true,
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "DAI_P3/index.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4148,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1414,
-								1414
+								4690,
+								4690
 							]
 						],
 						"settings":
@@ -518,8 +548,39 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 576.0,
+						"translation.x": -0.0,
+						"translation.y": 2368.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/rafaellg8/Documentos/GII/Cuarto/IV/python-getting-started/plucorlg/configdb.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5093,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1004,
+								1004
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 48.0,
+						"translation.y": 1680.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
