@@ -119,11 +119,8 @@ class RegistrationForm(Form):
 
       #comprobamos si exsite el usuario en Mongodb
       def checkuserMongo(self,connection,user,passw):
-          try:
-            re =  connection.getUserLogin()
+            re =  connection.getUserLogin(user,passw)
             return re
-          except:
-            return ("Error login")
 
 
 

@@ -59,7 +59,9 @@ def login():
         session['username'] = request.form['username']
         #Comprobar si el usuario existe, si no existe, redireccionamos a la pagina de error de usuario
         form = RegistrationForm()
-        if (form.checkuserMongo(conn,request.form['username'],request.form['password']))==True:
+        var = form.checkuserMongo(conn,request.form['username'],request.form['password'])
+        print var
+        if (var==True):
             return redirect(url_for('index'))
         else:
             return render_template('errorUser.html',usuario = None)
@@ -93,20 +95,17 @@ def register():
     #si el usuario esta registrado guardamos los datos
     if request.method == 'POST' and form.validate() and ('username' in session):
             #guardamos los datos nuevos o editados
+            print ("Edito aqui")
             form.databasesMongoUpdate(conn,session['username'])
             #por si cambia el nombre de usuario
             session['username']=form.username.data
             #conn.insertData(form)
             return render_template('perfil.html',usuario=form.username.data,form=form)
     elif request.method == 'POST' and form.validate():
-            #si se ha accedido desde una sesion la borramos
-            return ('/logout')
             #grabamos los datos
             form.databasesMongo(conn)
             return render_template('hijo.html',usuario=form.username.data)
 
-    #si se pulsa desde un usuario loggeado
-    logout()
     #devolvemos la pagina de registro
     return render_template('register.html',form=form)
 

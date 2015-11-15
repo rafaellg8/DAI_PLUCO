@@ -64,6 +64,7 @@ class Database():
                   data = self.collection.find({'username':username})
                   for d in data:
                         print ("Datos de "+d['username'])
+                        print (d['username']+username+" "+d['password']+" "+password)
                         if d['username'] == username and d['password'] == password:
                               return True
                         else:
