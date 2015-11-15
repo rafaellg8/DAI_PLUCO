@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 """
 Registro de datos y exportación a dbm
 """
@@ -150,3 +151,4 @@ class RegistrationForm(Form):
           form.confirm.data = (db["confirm"])
 
           return form
+

@@ -59,7 +59,7 @@ def login():
         session['username'] = request.form['username']
         #Comprobar si el usuario existe, si no existe, redireccionamos a la pagina de error de usuario
         form = RegistrationForm()
-        if (form.checkuserMongo(conn,request.form['username'],request.form['password'])):
+        if (form.checkuserMongo(conn,request.form['username'],request.form['password']))==True:
             return redirect(url_for('index'))
         else:
             return render_template('errorUser.html',usuario = None)

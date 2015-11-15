@@ -67,7 +67,6 @@ class Database():
                         if d['username'] == username and d['password'] == password:
                               return True
                         else:
-                              print "Error linea 67"
                               return False
 
 
@@ -84,19 +83,14 @@ class Database():
             system.indexes
             usuarios
             > db
-
-
             pluco.usuarios.insert({
                   author: ""
                   ......
                   })
-
             doc = {"name":"Alberto","surname":"Negron","twitter":"@Altons"}
-
             #pasamos username por funcion username
             query = collection.find_one({"username":username})
             print (query['name'])
-
             b.people.update(
    { name: "Andy" },
    {
@@ -106,6 +100,4 @@ class Database():
    },
    { upsert: true }
 )
-
-
             """
