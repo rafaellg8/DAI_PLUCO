@@ -95,7 +95,6 @@ def register():
     #si el usuario esta registrado guardamos los datos
     if request.method == 'POST' and form.validate() and ('username' in session):
             #guardamos los datos nuevos o editados
-            print ("Edito aqui")
             form.databasesMongoUpdate(conn,session['username'])
             #por si cambia el nombre de usuario
             session['username']=form.username.data
@@ -103,8 +102,11 @@ def register():
             return render_template('perfil.html',usuario=form.username.data,form=form)
     elif request.method == 'POST' and form.validate():
             #grabamos los datos
-            form.databasesMongo(conn)
-            return render_template('hijo.html',usuario=form.username.data)
+            if (conn.getUserData(form.username.data))==True:
+                form.databasesMongo(conn)
+                return render_template('hijo.html',usuario=form.username.data)
+            else:
+                return render_template('errorRegister.html',usuario=None)
 
     #devolvemos la pagina de registro
     return render_template('register.html',form=form)

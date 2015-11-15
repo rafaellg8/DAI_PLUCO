@@ -64,12 +64,20 @@ class Database():
                   data = self.collection.find({'username':username})
                   for d in data:
                         print ("Datos de "+d['username'])
-                        print (d['username']+username+" "+d['password']+" "+password)
                         if d['username'] == username and d['password'] == password:
                               return True
                         else:
                               return False
 
+            #obtener nombre de usuario, y comprobar que esta libre para poder registrar
+            def getUserName(self,username):
+                  #pasamos username por funcion username
+                  data = self.collection.find({'username':username})
+                  if (data):
+                     print ("Existe usuario")
+                     return False
+                  else:
+                     return True
 
             """> show databases
             local 0.078125GB

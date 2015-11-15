@@ -73,10 +73,15 @@ class RegistrationForm(Form):
       def databasesMongo(self,conn):
           form = self
           try:
-            #insertamos los datos
-            conn.insertData(form)
+            #comprobamos si el nombre de usuario esta libre
+            if (conn.getUserName(form.username)):
+              #insertamos los datos
+              conn.insertData(form)
+            else:
+              print "usuario existente"
+              return "/"
           except ValueError:
-            return ("Error coleccion inexistente imposible registrar datos")
+            return ("Error coleccion inexistente, imposible registrar datos")
 
       def databasesMongoUpdate(self,conn,username):
           form = self
@@ -122,7 +127,10 @@ class RegistrationForm(Form):
             re =  connection.getUserLogin(user,passw)
             return re
 
-
+      #antes de registrar comprobamos que el nombre de usuario esta libre
+      def checkuserNameMongo(self,connection,user):
+            re =  connection.getUserName(user)
+            return re
 
       #nos pasan la conexion y devolvemos formulario con los datos asociados
       def getDataMongo(self,form,user,connection):
