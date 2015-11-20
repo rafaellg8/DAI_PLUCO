@@ -1,0 +1,57 @@
+{% extends "index.html" %}{% block title %}Registro{% endblock %}
+{% block cabeceraTitulo %}
+<div class="botonera">
+  <a href="/login">
+    <button>login</button>
+  </a>
+  <a href="/register">
+    <button>register</button>
+  </a>
+</div>
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+
+
+{% block articuloPrincipal %}
+  <form method=post action='/register'>
+  {% form %}
+    <dl>
+      {{ render_field(form.username) }}
+      <br>
+      {{ render_field(form.name)}}
+      <br>
+      {{ render_field(form.firstName)}}
+      <br>
+      {{ render_field(form.secondName)}}
+      <br>
+      {{ render_field(form.email) }}
+      <br>
+      {{ render_field(form.password) }}
+      <br>
+      {{ render_field(form.confirm) }}
+      <br>
+      {% for subfield in form.paymethod %}
+        <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+        </tr>
+      {% endfor %}
+      <br><br>
+      {{ render_field(form.creditCard)}}
+      <br>
+
+      {{ render_field(form.birthday)}}
+      {{ render_field(form.address)}}
+      {{ render_field(form.accept_tos) }}
+    </dl>
+    <p><input type=submit value=Registrarse>
+    </form>
+  {% endblock %}
+
+  {% block extra %}
+  {% endblock %}

@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls import patterns
 
-urlpatterns = [
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'tango_with_django_project_17.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+
     url(r'^admin/', include(admin.site.urls)),
-]
+    url(r'^plucoApp/', include('plucoApp.urls')), # ADD THIS NEW TUPLE!
+)

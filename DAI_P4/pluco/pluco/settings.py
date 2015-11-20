@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's(pft(8yyn8an1u4(^i6-y3al(f$cl@f*o!a=10ftmx!)uy)ap'
+SECRET_KEY = '&nl#-_b6m0rao0*illsw+iu0gf5@ftia^os4ql)+iv3_&g^0jg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'macros',
     'plucoApp',
 )
 
@@ -52,6 +53,12 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'pluco.urls'
+
+
+
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
+TEMPLATE_DIRS = (TEMPLATE_PATH,)
 
 TEMPLATES = [
     {

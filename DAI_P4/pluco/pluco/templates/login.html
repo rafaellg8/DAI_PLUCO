@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+{% block title %}
+    Login
+{% endblock %}
+
+{% block panelLateral %}
+<div class="sidebar">
+  <a href="/" id="logo"><img src="/static/images/logo.png" alt="logo" width=90 height=90></a>
+  <ul>
+    <li class="home">
+      <a href="/">Home</a>
+    </li>
+    <li class="about">
+      {% if usuario %}
+      <a href="/perfil">Perfil</a>
+      {% else %}
+      <a href="https://www.github.com/rafaellg8">About</a>
+      {% endif %}
+    </li>
+    <li class="projects">
+      <a href="https://www.github.com/rafaellg8/DAI_PLUCO">Projects</a>
+    </li>
+    <li class="blog">
+      <a href="/register">Sign Up</a>
+    </li>
+    <li class="contact">
+      <a href="/contact">Contact</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+{% block cabeceraTitulo %}
+
+<div class="botonera">
+  <a href="/login"><button>login</button></a>
+  <a href="/register"><button>register</button></a>
+</div>
+
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+{% block articuloPrincipal %}
+
+  <div>
+    <h4>LOGIN: </h4>
+  </div>
+
+<div>
+  <form action="" method="post">
+            <p><input type=text name=username>
+            <p><input type=password name=password>
+            <p><input type=submit value=Login>
+        </form>
+
+  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
+
+</div>
+{% endblock %}

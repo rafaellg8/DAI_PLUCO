@@ -1,0 +1,21 @@
+configuramos no tocar
+
+#configuramos parametros conexion
+            server='ds055584.mongolab.com'
+            port = 55584
+            db_name = 'pluco'
+            db_username = 'admin'
+            db_password = 'admin'
+            #establecemos la conexion
+            try:
+                  #configuramos conexion mongolab
+                  print '\nConnecting....'
+                  conn = pymongo.MongoClient(server,port)
+
+                  #obtenemos la base de datos
+                  print '\nGetting databases....'
+                  db = conn[db_name]
+
+                  #autenticamos
+                  print '\nAuthenticating....'
+                  db.authenticate(db_username,db_password)
