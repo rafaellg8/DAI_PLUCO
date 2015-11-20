@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
 def index(request):
-    return render(request, 'plucoApp/hijo.html')
+    return render(request, 'hijo.html')
 def login(request):
       return render(request,'/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P4/pluco/plucoApp/templates/login.html')
 def register(request):

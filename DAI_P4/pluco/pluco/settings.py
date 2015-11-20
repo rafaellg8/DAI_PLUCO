@@ -54,16 +54,20 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'pluco.urls'
 
+print BASE_DIR
 
+BASE_DIR_FILES = BASE_DIR+'/pluco/'
 
-TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+print BASE_DIR_FILES
 
-TEMPLATE_DIRS = (TEMPLATE_PATH,)
+TEMPLATE_PATH = BASE_DIR_FILES+'templates/'
+
+print TEMPLATE_PATH
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR_FILES, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
