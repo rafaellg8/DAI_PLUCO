@@ -6,10 +6,10 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'hijo.html')
 def login(request):
-      return render(request,'/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P4/pluco/plucoApp/templates/login.html')
+      return render(request,'login.html')
 def register(request):
-      return render(request,'/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P4/pluco/plucoApp/templates/register.html')
+      return render(request,'register.html')
 def about(request):
-      return render(request,'/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P4/pluco/plucoApp/templates/about.html')      
+      return render(request,'about.html')      
 def contact(request):
-      return render(request,'/home/rafaellg8/Documentos/GII/Cuarto/DAI/DAI_PLUCO/DAI_P4/pluco/plucoApp/templates/contact.html')      
+      return render(request,'contact.html')      

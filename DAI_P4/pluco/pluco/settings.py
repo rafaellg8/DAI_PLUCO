@@ -54,20 +54,17 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'pluco.urls'
 
-print BASE_DIR
+#Configuramos la direccion de los directorios
 
 BASE_DIR_FILES = BASE_DIR+'/pluco/'
 
-print BASE_DIR_FILES
+TEMPLATE_PATH = BASE_DIR+'templates/'
 
-TEMPLATE_PATH = BASE_DIR_FILES+'templates/'
-
-print TEMPLATE_PATH
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR_FILES, 'templates/')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,5 +107,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+STATIC_PATH = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = ('STATIC_PATH',)
