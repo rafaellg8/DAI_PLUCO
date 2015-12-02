@@ -63,15 +63,11 @@
   <br><br><br>
   <h2>Lista de Foros</h2>
 
-  <h1>New post</h1>
+  <h1>Nuevo Tema</h1>
         <form method="POST" class="post-form">{% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Save</button>
+            <button type="submit" class="save btn btn-default">Nuevo tema</button>
         </form>
-
-
-  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
-
 </div>
 {% endblock %}
 
