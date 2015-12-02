@@ -10,6 +10,6 @@ def login(request):
 def register(request):
       return render(request,'register.html')
 def about(request):
-      return render(request,'about.html')      
+      return render(request,'about.html')
 def contact(request):
-      return render(request,'contact.html')      
+      return render(request,'contact.html')

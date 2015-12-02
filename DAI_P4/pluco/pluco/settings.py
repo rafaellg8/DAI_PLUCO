@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'macros',
     'plucoApp',
+    'foros',
 )
 
 MIDDLEWARE_CLASSES = (

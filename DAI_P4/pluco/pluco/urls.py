@@ -23,5 +23,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^plucoApp/', include('plucoApp.urls')), # ADD THIS NEW TUPLE!
+    url(r'^plucoApp/', include('plucoApp.urls')),
+    url(r'^foros/',include('foros.urls')), # ADD THIS NEW TUPLE!
 )
