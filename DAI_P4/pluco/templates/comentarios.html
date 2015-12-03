@@ -63,13 +63,32 @@
   <br><br><br>
   <h2>Lista de Foros</h2>
 
+
+  <h1>Lista Comentarios </h1>
+
+  {% if com %}
+        <ul style="border: 1px solid black">
+            {% for c in com %}
+            <h2>{{ c }}</h2>
+            <li>{{c.title}}</li>
+            <li>{{c.theme}}</li>
+            <li>{{c.userName}}</li>
+            <li>{{c.commentText}}</li>
+            <li>{{c.url}}</li>
+            <li>{{c.date}}</li>
+            {% endfor %}
+        </ul>
+  {% else %}
+      <strong>There are no categories present.</strong>
+  {% endif %}
+
+  {% if commentForm %}
   <h1>Nuevo Tema</h1>
         <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
+            {{ commentForm.as_p }}
             <button type="submit" class="save btn btn-default">Nuevo tema</button>
         </form>
-
-        <a href="/foros/comentarios">Comentarios</a>
+  {% endif %}
 </div>
 {% endblock %}
 

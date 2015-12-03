@@ -33,6 +33,7 @@ class Comment(models.Model):
       title = models.CharField(max_length=128,unique=True)
       commentText = models.CharField(max_length=500)
       userName = models.ForeignKey(User)
+      date = models.DateField()
       url = models.URLField()
 
       def __unicode__(self):
