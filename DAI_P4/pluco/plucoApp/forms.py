@@ -12,12 +12,11 @@ from django import forms
 class UserForms(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('userName','name','firstName','secondName','email','password','birthday',)
+        fields = ('userName','name','email','password',)
 
 
-    def addUser(userName,name,firstName,secondName,birthday,email,password):
-          u = User.objects.get_or_create(userName=userName,name=name,firstName=firstName,
-                secondName=secondName,birthday=birthday,email=email,password=password)[0]
+    def addUser(userName,name,email,password):
+          u = User.objects.get_or_create(userName=userName,name=name,email=email,password=password)[0]
           return u
 
 class Comments(forms.ModelForm):

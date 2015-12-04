@@ -14,9 +14,6 @@ class Forum(models.Model):
 class User(models.Model):
       userName = models.CharField(max_length=25,unique=True)
       name = models.CharField(max_length=25)
-      firstName = models.CharField(max_length=25)
-      secondName = models.CharField(max_length=25)
-      birthday = models.DateField()
       email = models.EmailField()
       password = models.CharField(max_length=25)
 

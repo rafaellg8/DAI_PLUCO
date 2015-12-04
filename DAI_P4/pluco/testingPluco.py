@@ -29,8 +29,7 @@ def addForum(theme,title,asignature):
             return forum
 
 def addUser(userName,name,firstName,secondName,birthday,email,password):
-      u = User.objects.get_or_create(userName=userName,name=name,firstName=firstName,
-            secondName=secondName,birthday=birthday,email=email,password=password)[0]
+      u = User.objects.get_or_create(userName=userName,name=name,email=email,password=password)[0]
       return u
 
 def addComment(forum,idC,tit,commentTxt,user,url,date):

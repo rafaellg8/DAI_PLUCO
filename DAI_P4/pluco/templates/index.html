@@ -2,9 +2,18 @@
 <!-- Website template by freewebsitetemplates.com -->
 <html>
 <head>
-	<meta charset="UTF-8">
+	 <meta charset="utf-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta name="description" content="PLUCO-RLG">
+	 <meta name="author" content="Rafael Lachica Garrido">
+	 <link rel="icon" href="/static/images/logo.png">
+
 	<title>PLUCO - {% block title %}{% endblock %}</title>
+
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 </head>
 <body>
 	<div id="background-green">
@@ -35,6 +44,36 @@
 		</div>
 	{% endblock %}
 			<div class="body">
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: orange">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img style="margin-top: -15px;" src="/static/images/logo.png" alt="logo" height="50" width="50"></a>
+					<h4>PLUCO - Comparte tu conocimiento!!!</h4>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+                <li><a class="menuLink" href="plucoApp">Home</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="/foros">Foros</a></li>
+                        <li><a href="plucoApp/logout">Logout</a></li>
+                    {% else %}
+                        <li><a href="plucoApp/register">Register Here</a></li>
+                        <li><a href="plucoApp/login">Login</a></li>
+                    {% endif %}
+                    <li><a href="plucoApp/about">About</a></li>
+
+              </ul>
+        </div>
+      </div>
+    </div>
+
 				<div class="content-home">
 					{% block cabeceraTitulo %}
 					<div>
@@ -61,7 +100,7 @@
 								<a href="/foros"><img src="/static/images/foros.jpg" width="300px" height="185px" alt=""></a>
 								<h3><a href="/foros">Foros / Dudas</a></h3>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam eleifend leo, id accumsan ligula mattis quis. Duis commodo dapibus enim, sit amet facilisis eros rhoncus venenatis.
+									Foros asociados a PLUCO. Resuelve dudas, expón tus conocimientos, participa!!!
 								</p>
 								<a href="projects.html">Ver últimos foros</a>
 							</li>
@@ -70,7 +109,7 @@
 								<a href="blog.html"><img src="/static/images/nube.jpg" width="300px" height="185px" alt=""></a>
 								<h3><a href="blog.html">Almacenamiento en la nube</a></h3>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam eleifend leo, id accumsan ligula mattis quis. Duis commodo dapibus enim, sit amet facilisis eros rhoncus venenatis.
+									Almacenamientos de archivos en la nube.
 								</p>
 								<a href="blog.html">Últimos archivos compartidos</a>
 							</li>
@@ -80,7 +119,7 @@
 				</div>
 
 				{% block footer  %}
-				<div class="footer">
+				<div style="background-color: orange">
 					<p>
 						&#169; 2015-2016 Rafael Lachica Garrido
 					</p>
@@ -107,5 +146,13 @@
 
 		</div>
 	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
