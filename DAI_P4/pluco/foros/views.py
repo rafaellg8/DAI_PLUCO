@@ -7,8 +7,11 @@ from plucoApp.forms import Forums,Comments,UserForms
 from django.shortcuts import redirect
 import datetime
 
-def showComments(request):
-    com = Comment.objects.all()
+def showComments(request,theme):
+    #obtenemos el foro asociado a un tema
+    form = Forum.objects.get(theme=theme)
+    #filtramos comentarios de un foro con un tema
+    com = Comment.objects.filter(theme=form).order_by('date')
     context = {'com': com}
     #render
     return render(request,'comentarios.html',context)

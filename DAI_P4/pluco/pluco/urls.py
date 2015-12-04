@@ -26,5 +26,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^plucoApp/', include('plucoApp.urls')),
     url(r'^foros/',include('foros.urls')),
-    url(r'^foros/theme/(?P<theme>[\w\-]+)/$', views.theme, name='theme'), # ADD THIS NEW TUPLE!
+    url(r'^comentario/',include('foros.urls')),
+    url(r'^foros/theme/(?P<theme>[\w\-]+)/$', views.theme, name='theme'),
+     # ADD THIS NEW TUPLE!
 )

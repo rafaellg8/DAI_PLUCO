@@ -64,23 +64,23 @@
   <h2>Lista de Foros</h2>
 
   {% if forum %}
-             <ul>
-                 {% for f in forum %}
+            {% for f in forum %}
+             <ul style="border: 1px dashed black;margin-top: 10px; background-color: ">
                  <!-- Following line changed to add an HTML hyperlink -->
-                 <li><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></li>
-                 {% endfor %}
+                 <li style="float: left;margin-right: 250px;margin-top: 5px;margin-bottom: 5px"><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></li>
              </ul>
-        {% else %}
-  <h1>Nuevo Tema</h1>
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Nuevo tema</button>
-        </form>
+             {% endfor %}
+  {% endif %}
 
-        <a href="/foros/comentarios">Comentarios</a>
-{% endif %}
 </div>
 {% endblock %}
 
 {% block extra %}
+<div style="margin-top: 5%">
+<h2>Abrir tema/Foro</h2>
+      <form method="POST" class="post-form">{% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="save btn btn-default">Nuevo tema</button>
+      </form>
+</div>
 {% endblock %}

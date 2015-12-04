@@ -158,3 +158,195 @@ python manage.py runserver
 Ahora si abrimos en el navegador **localhost:8000/admin** tenemos nuestra interfaz de administrador configurada.
 
 ##Testeando la base de datos y sus modelos
+
+cramos los archivos [models.py](/plucoApp/models.py) y [testingPluco.py](/testingPluco.py)
+
+##Configurando los modelos a un formulario
+
+Creamos los foros en forms.py:
+```
+from django import forms
+from .models import Comment,User,Forum
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('userName','name','firstName','secondName','email','password','birthday',)
+
+class Comment(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('theme','title','commentText','url',)
+
+class Forum(forms.ModelForm):
+    class Meta:
+        model = Forum
+        fields = ('title','theme','asignature',)
+```
+
+Añadimos las urls en urls.py de pluco:
+```
+url(r'^foros/',include('foros.urls'))
+```
+
+En las urls de foros:
+```
+from django.conf.urls import patterns
+from django.conf.urls import url
+
+from foros import views
+
+urlpatterns = patterns('',
+    url(r'comentario', views.comment, name='comment'),
+    url(r'^$', views.forums, name='forums'),
+)
+```
+
+Y finalmente las vistas:
+
+```
+def comment(request):
+    return render(request,'comentarios.html')
+
+def forums(request):
+    form = Forum
+    return render(request,'foros.html', {'form': form})
+```
+
+[enlace models forms](http://tutorial.djangogirls.org/es/django_forms/index.html)
+
+##Mostrar comentarios y añadir
+```
+def comment(request):
+    if request.method =="POST":
+        com = Comment.objects.order_by('idComment')[:1]
+        for c in com:
+            idC = c.idComment+1
+
+        com = Comments(request.POST)
+
+        userName = "usuariodeprueba"
+        #validamos el formulario
+        if com.is_valid():
+            newComment = Comment(request.POST["theme"],idC,request.POST["title"],request.POST["commentText"],userName,request.POST["url"],datetime.date.today)
+            return render(request,'comentarios.html')
+    else:
+        com = Comment()
+    return render(request,'comentarios.html',{'commentForm':com},context_instance=RequestContext(request))
+```    
+
+
+##Mostrar comentarios ordenados por foros y temas
+Para ello seguimos el punto 7 del tutorial de [Django](http://www.tangowithdjango.com/book17/chapters/models_templates.html).
+
+Creamos una nueva vista en views.py de la app foros:
+Esto seleccionará los foros ordeandos por temas
+```
+def theme(request,theme):
+
+    # Create a context dictionary which we can pass to the template rendering engine.
+    context_dict = {}
+
+    try:
+        #obtiene el foro asociado por tema
+        form = Forum.objects.get(theme=theme)
+        context_dict['forum_name'] = form.title
+
+        # filtramos comentarios con tema del foro
+        comm = Comment.objects.filter(theme=form)
+
+        # Adds our results list to the template context under name pages.
+        context_dict['comm'] = comm
+        # We also add the category object from the database to the context dictionary.
+        # We'll use this in the template to verify that the category exists.
+        context_dict['theme'] = form
+    except Forum.DoesNotExist:
+        # We get here if we didn't find the specified category.
+        # Don't do anything - the template displays the "no category" message for us.
+        pass
+
+    # Go render the response and return it to the client.
+    return render(request, 'forosCat.html', context_dict)
+```
+
+Modificamos el showComments del views.py, para que muestre los comentarios ordeandos por tema y fecha también:
+```
+def showComments(request,theme):
+    #obtenemos el foro asociado a un tema
+    form = Forum.objects.get(theme=theme)
+    #filtramos comentarios de un foro con un tema
+    com = Comment.objects.filter(theme=form).order_by('date')
+    context = {'com': com}
+    #render
+    return render(request,'comentarios.html',context)
+```
+
+Modificamos el urls.py principal de pluco:
+```
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'tango_with_django_project_17.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^plucoApp/', include('plucoApp.urls')),
+    url(r'^foros/',include('foros.urls')),
+    url(r'^comentario/',include('foros.urls')),
+    url(r'^foros/theme/(?P<theme>[\w\-]+)/$', views.theme, name='theme'),
+     # ADD THIS NEW TUPLE!
+)
+```
+
+Finalmente modifico también los urls de la aplicación "foros":
+
+```
+urlpatterns = patterns('',
+    url(r'(?P<theme>[\w\-]+)/$', views.showComments, name='theme'),
+    url(r'nuevoComentario', views.comment, name='comment'),
+    url(r'^$', views.showForums, name='forums'),
+    url(r'foros', views.showForums, name='comment'),
+)
+```
+Así reconoce la llama a showComments por un determinado tema de un comentario, la primera línea de las urls.
+
+Ya sólo nos falta modificar los templates de los foros y comentarios para que muestren una lista de foros, y enlaces a esos comentarios de los foros.
+1. foros.html:
+```
+<div>
+  <h3>Foros</h3>
+  <br><br><br>
+  <h2>Lista de Foros</h2>
+
+  {% if forum %}
+             <ul>
+                 {% for f in forum %}
+                 <!-- Following line changed to add an HTML hyperlink -->
+                 <li style="float: left;margin-right: 250px;margin-top: 50px"><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></li>
+                 {% endfor %}
+             </ul>
+  {% endif %}
+
+</div>
+```
+Obtiene el parámetro forum de las vistas y muestra una lista con los enlaces a los foros
+
+
+
+2. comenarios.html:
+```
+{% if com %}
+    {% for c in com %}
+      <ul style="border: 1px solid black">
+          <h2>{{ c }}</h2>
+          <li>{{c.title}}</li>
+          <li>{{c.theme}}</li>
+          <li>{{c.userName}}</li>
+          <li>{{c.commentText}}</li>
+          <li>{{c.url}}</li>
+          <li>{{c.date}}</li>
+      </ul>
+          {% endfor %}
+{% endif %}
+```
+
+Muestra los comentarios asociados al tema

@@ -67,8 +67,8 @@
   <h1>Lista Comentarios </h1>
 
   {% if com %}
+      {% for c in com %}
         <ul style="border: 1px solid black">
-            {% for c in com %}
             <h2>{{ c }}</h2>
             <li>{{c.title}}</li>
             <li>{{c.theme}}</li>
@@ -76,8 +76,8 @@
             <li>{{c.commentText}}</li>
             <li>{{c.url}}</li>
             <li>{{c.date}}</li>
-            {% endfor %}
         </ul>
+            {% endfor %}
   {% endif %}
 
   <br>

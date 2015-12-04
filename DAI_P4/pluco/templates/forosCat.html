@@ -70,7 +70,7 @@
 
            <ul><h4>Lista de Comentarios</h4>
                {% for c in comm %}
-               <li><a href="{{ c.title }}">{{ c.title }}</a></li>
+               <li><a href="/comentario/{{c.theme}}">{{ c.title }}</a></li>
                {% endfor %}
            </ul>
            {% else %}
