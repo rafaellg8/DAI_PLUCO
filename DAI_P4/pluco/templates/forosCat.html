@@ -1,9 +1,9 @@
 {% extends "index.html" %}
 {% block title %}
   {% if usuario %}
-    {{usuario}} - Foros
+    {{usuario}}
   {% else %}
-    Foros
+    Principal
     {% endif %}
 {% endblock %}
 
@@ -57,42 +57,34 @@
 </div>
 {% endblock %}
 {% block articuloPrincipal %}
+{% if usuario %}
+  <div>
+    <h4>Bienvenido: </h4>
+    <h3>{{usuario}}</h3>
+  </div>
+{% else %}
+
+<h2>{{ forum_name }}</h2>
+       {% if theme %}
+           {% if comm %}
+
+           <ul><h4>Lista de Comentarios</h4>
+               {% for c in comm %}
+               <li><a href="{{ c.title }}">{{ c.title }}</a></li>
+               {% endfor %}
+           </ul>
+           {% else %}
+               <strong>No pages currently in category.</strong>
+           {% endif %}
+       {% else %}
+           The specified theme {{ forum_name }} does not exist!
+       {% endif %}
 
 <div>
-  <h3>Foros</h3>
-  <br><br><br>
-  <h2>Lista de Foros</h2>
+  <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
 
-
-  <h1>Lista Comentarios </h1>
-
-  {% if com %}
-        <ul style="border: 1px solid black">
-            {% for c in com %}
-            <h2>{{ c }}</h2>
-            <li>{{c.title}}</li>
-            <li>{{c.theme}}</li>
-            <li>{{c.userName}}</li>
-            <li>{{c.commentText}}</li>
-            <li>{{c.url}}</li>
-            <li>{{c.date}}</li>
-            {% endfor %}
-        </ul>
-  {% endif %}
-
-  <br>
-  {% if commentForm %}
-  <h1>Nuevo comentario</h1>
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ commentForm.as_p }}
-            <button type="submit" class="save btn btn-default">Nuevo tema</button>
-        </form>
-  {% else %}
-    <a href="nuevoComentario"><button type="button" name="button">Nuevo Comentario</button></a>
-  {% endif %}
+  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
 
 </div>
-{% endblock %}
-
-{% block extra %}
+{% endif %}
 {% endblock %}

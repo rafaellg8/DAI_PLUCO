@@ -23,7 +23,7 @@ class UserForms(forms.ModelForm):
 class Comments(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('theme','title','commentText','url','date',)
+        fields = ('theme','title','commentText','url',)
 
     def addComment(forum,idC,tit,commentTxt,user,url,date):
           com = Comment.objects.get_or_create(theme=forum,idComment=idC,title=tit,commentText=commentTxt,userName=user,url=url,date=date)[0]

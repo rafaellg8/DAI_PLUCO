@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls import patterns
+from foros import views
 
 urlpatterns = patterns('',
     # Examples:
@@ -24,5 +25,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^plucoApp/', include('plucoApp.urls')),
-    url(r'^foros/',include('foros.urls')), # ADD THIS NEW TUPLE!
+    url(r'^foros/',include('foros.urls')),
+    url(r'^foros/theme/(?P<theme>[\w\-]+)/$', views.theme, name='theme'), # ADD THIS NEW TUPLE!
 )
