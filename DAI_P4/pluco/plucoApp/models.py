@@ -16,7 +16,7 @@ class User(models.Model):
       name = models.CharField(max_length=25)
       email = models.EmailField()
       password = models.CharField(max_length=25)
-
+      address = models.CharField(max_length=45)
       def __unicode__(self):
             return self.userName
 
@@ -28,7 +28,7 @@ class Comment(models.Model):
       theme = models.ForeignKey(Forum)
       idComment = models.IntegerField(null=False)
       title = models.CharField(max_length=128,unique=True)
-      commentText = models.CharField(max_length=500)
+      commentText = models.TextField(max_length=500)
       userName = models.ForeignKey(User)
       date = models.DateField()
       url = models.URLField()

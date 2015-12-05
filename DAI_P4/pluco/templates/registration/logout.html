@@ -1,16 +1,13 @@
 {% extends "index.html" %}
 {% block title %}
-  {% if usuario %}
-    {{usuario}}
-  {% else %}
-    Principal
-    {% endif %}
+    Login
 {% endblock %}
 
-{% load static %}
 {% block panelLateral %}
 {% endblock %}
 {% block cabeceraTitulo %}
+
+
 
 <div>
   <h3><span class="beauty">PLUCO</span></h3>
@@ -20,17 +17,10 @@
 </div>
 {% endblock %}
 {% block articuloPrincipal %}
-{% if user.is_authenticated %}
-  <div>
-    <h3>Bienvenido: </h3>
-    <h3 style="float: left;margin-left: 200px">{{user.username}}</h3>
-  </div>
-{% else %}
-<div>
-  <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
 
+<h1>Logg out</h1>
+  <p>Adiós / Bye </p>
   <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
 
 </div>
-{% endif %}
 {% endblock %}

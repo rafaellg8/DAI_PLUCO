@@ -14,7 +14,7 @@ def test():
       forum = addForum('Ayuda','Tema de Ayuda','HELP')
 
       testingUser = addUser('testingUser','Testing','Testing firstname',
-            'Testing SecondName','0001-01-01','testing@mail.com','password')
+            'Testing SecondName','0001-01-01','testing@mail.com','password','Granada, España')
 
       #añadimos ahora el testing user y el forum como una clave externa a comentarios
       addComment(forum,1,'Testeando','Testeando un comentario',testingUser,'http://urlnube/recurso',datetime.date.today())
@@ -28,8 +28,8 @@ def addForum(theme,title,asignature):
             forum.save()
             return forum
 
-def addUser(userName,name,firstName,secondName,birthday,email,password):
-      u = User.objects.get_or_create(userName=userName,name=name,email=email,password=password)[0]
+def addUser(userName,name,firstName,secondName,birthday,email,password,address):
+      u = User.objects.get_or_create(userName=userName,name=name,email=email,password=password,address=address)[0]
       return u
 
 def addComment(forum,idC,tit,commentTxt,user,url,date):

@@ -21,7 +21,7 @@
       <a href="https://www.github.com/rafaellg8/DAI_PLUCO">Projects</a>
     </li>
     <li class="blog">
-      <a href="plucoApp/register">Sign Up</a>
+      <a href="{% url 'registration_register' %}">Sign Up</a>
     </li>
     <li class="contact">
       <a href="/contact">Contact</a>
@@ -33,7 +33,7 @@
 
 <div class="botonera">
   <a href="/login"><button>login</button></a>
-  <a href="plucoApp/register"><button>register</button></a>
+  <a href="{% url 'registration_register' %}"><button>register</button></a>
 </div>
 
 <div>
@@ -48,7 +48,7 @@
   <div>
     <h4>ERROR: </h4>
     <h4>Usuario ocupado elija otro</h4>
-    <a href="/register">Volver registro y cambiar username</a>
+    <a <a href="{% url 'registration_register' %}">Volver registro y cambiar username</a>
   </div>
 
 <div>

@@ -11,16 +11,6 @@
 {% block panelLateral %}
 {% endblock %}
 {% block cabeceraTitulo %}
-{% if usuario %}
-  <div class="botonera">
-    <a href="/logout"><button>logout</button></a>
-  </div>
-{% else %}
-<div class="botonera">
-  <a href="plucoApp/login"><button>login</button></a>
-  <a href="plucoApp/register"><button>register</button></a>
-</div>
-{% endif %}
 <div>
   <h3><span class="beauty">PLUCO</span></h3>
   <p style="float: left;margin-right: 400px;margin-top: 20px">

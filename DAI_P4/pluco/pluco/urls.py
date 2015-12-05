@@ -17,6 +17,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls import patterns
 from foros import views
+from registration.backends.simple.views import RegistrationView
+from plucoApp.forms import UserForms
+
+# Clase que redirige a la pagina principal a un usuario que se ha registrado
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self,request, user):
+        return '/'
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -29,5 +37,7 @@ urlpatterns = patterns('',
     url(r'^foros/',include('foros.urls')),
     url(r'^comentario/',include('foros.urls')),
     url(r'^foros/theme/(?P<theme>[\w\-]+)/$', views.theme, name='theme'),
-     # ADD THIS NEW TUPLE!
+    url(r'^accounts/register/$', MyRegistrationView.as_view(form_class=UserForms), name='registration_register'),
+    (r'^accounts/', include('registration.backends.simple.urls')),
 )
+     # ADD THIS NEW TUPLE!

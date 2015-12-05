@@ -45,8 +45,8 @@
   </div>
 {% else %}
 <div class="botonera">
-  <a href="plucoApp/login"><button>login</button></a>
-  <a href="plucoApp/register"><button>register</button></a>
+  <a href="{% url 'auth_login' %}"><button>login</button></a>
+  <a href="{% url 'registration_register' %}"><button>register</button></a>
 </div>
 {% endif %}
 <div>
