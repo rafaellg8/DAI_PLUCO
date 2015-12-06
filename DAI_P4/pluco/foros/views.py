@@ -1,10 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.template import RequestContext
 from plucoApp.models import Comment,Forum,User
 from django.http import HttpResponse
-from plucoApp.forms import Forums,Comments,UserForms
+from plucoApp.forms import Forums,Comments,userForms
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 import datetime
 
 def showComments(request,theme):
@@ -22,6 +25,7 @@ def showForums(request):
     #render
     return render(request,'foros.html',context)
 
+@login_required
 def comment(request):
     if request.method =="POST":
         com = Comment.objects.order_by('idComment')[:1]
@@ -30,15 +34,16 @@ def comment(request):
 
         com = Comments(request.POST)
 
-        userName = "usuariodeprueba"
+        username = "usuariodeprueba"
         #validamos el formulario
         if com.is_valid():
-            newComment = Comment(request.POST["theme"],idC,request.POST["title"],request.POST["commentText"],userName,request.POST["url"],datetime.date.today)
+            newComment = Comment(request.POST["theme"],idC,request.POST["title"],request.POST["commentText"],username,request.POST["url"],datetime.date.today)
             return render(request,'comentarios.html')
     else:
         com = Comment()
     return render(request,'comentarios.html',{'commentForm':com},context_instance=RequestContext(request))
 
+@login_required
 def forums(request):
     if request.method =="POST":
         form = Forums(request.POST)

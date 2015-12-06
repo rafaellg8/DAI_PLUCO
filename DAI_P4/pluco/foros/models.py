@@ -12,7 +12,7 @@ class Forum(models.Model):
             return self.title
 
 class User(models.Model):
-      userName = models.CharField(max_length=25,unique=True)
+      username = models.CharField(max_length=25,unique=True)
       name = models.CharField(max_length=25)
       firstName = models.CharField(max_length=25)
       secondName = models.CharField(max_length=25)
@@ -21,7 +21,7 @@ class User(models.Model):
       password = models.CharField(max_length=25)
 
       def __unicode__(self):
-            return self.userName
+            return self.username
 
 class Comment(models.Model):
       """docstring for Comment"""
@@ -32,7 +32,7 @@ class Comment(models.Model):
       idComment = models.IntegerField(null=False)
       title = models.CharField(max_length=128,unique=True)
       commentText = models.CharField(max_length=500)
-      userName = models.ForeignKey(User)
+      username = models.ForeignKey(User)
       url = models.URLField()
 
       def __unicode__(self):

@@ -93,6 +93,14 @@ DATABASES = {
     }
 }
 
+# Password hashes
+PASSWORD_HASHERS = (
+        'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+'django.contrib.auth.hashers.BCryptPasswordHasher',
+'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -114,6 +122,8 @@ STATIC_PATH = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ('STATIC_PATH',)
 
+#Media_ROOT
+MEADIA_ROOT = os.path.join(BASE_DIR,'media')
 # Registration configuration
 
 REGISTRATION_OPEN = True                # If True, users can register

@@ -6,17 +6,24 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE','pluco.settings')
 import django
 django.setup()
 
-from plucoApp.models import Forum,User,Comment
+from plucoApp.models import Forum,UserProfile,Comment
 from django import forms
+from django.contrib.auth.models import User
+from registration.forms import RegistrationForm
 
-class UserForms(forms.ModelForm):
+class userForms(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = User
-        fields = ('userName','name','email','password','address')
+        fields = ('username', 'email', 'password')
 
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('address', 'picture')
 
-    def addUser(userName,name,email,password,address):
-          u = User.objects.get_or_create(userName=userName,name=name,email=email,password=password,address=address)[0]
+    def addUser(username,firstname,email,password,address,picture):
+          u = UserProfile.objects.get_or_create(username=username,first_name=firstname,email=email,password=password,address=address,picture=picture)[0]
           u.save()
           return u
 
@@ -26,7 +33,7 @@ class Comments(forms.ModelForm):
         fields = ('theme','title','commentText','url',)
 
     def addComment(forum,idC,tit,commentTxt,user,url,date):
-          com = Comment.objects.get_or_create(theme=forum,idComment=idC,title=tit,commentText=commentTxt,userName=user,url=url,date=date)[0]
+          com = Comment.objects.get_or_create(theme=forum,idComment=idC,title=tit,commentText=commentTxt,username=user,url=url,date=date)[0]
           com.save()
           return com
 

@@ -7,8 +7,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE','pluco.settings')
 import django
 django.setup()
 
-from plucoApp.models import Forum,User,Comment
-
+from plucoApp.models import Forum,UserProfile,Comment
+from django.contrib.auth.models import User
 #aquí generamos las tablas con los datos insertados
 def test():
       forum = addForum('Ayuda','Tema de Ayuda','HELP')
@@ -28,12 +28,12 @@ def addForum(theme,title,asignature):
             forum.save()
             return forum
 
-def addUser(userName,name,firstName,secondName,birthday,email,password,address):
-      u = User.objects.get_or_create(userName=userName,name=name,email=email,password=password,address=address)[0]
+def addUser(username,name,firstName,secondName,birthday,email,password,address):
+      u = User.objects.get_or_create(username=username,first_name=firstName,email=email,password=password,)[0]
       return u
 
 def addComment(forum,idC,tit,commentTxt,user,url,date):
-      com = Comment.objects.get_or_create(theme=forum,idComment=idC,title=tit,commentText=commentTxt,userName=user,url=url,date=date)[0]
+      com = Comment.objects.get_or_create(theme=forum,idComment=idC,title=tit,commentText=commentTxt,username=user,url=url,date=date)[0]
       return com
 
 if __name__ == '__main__':

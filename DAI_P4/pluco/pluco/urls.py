@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls import patterns
 from foros import views
 from registration.backends.simple.views import RegistrationView
-from plucoApp.forms import UserForms
+from plucoApp.forms import userForms
 
 # Clase que redirige a la pagina principal a un usuario que se ha registrado
 class MyRegistrationView(RegistrationView):
@@ -37,7 +37,7 @@ urlpatterns = patterns('',
     url(r'^foros/',include('foros.urls')),
     url(r'^comentario/',include('foros.urls')),
     url(r'^foros/theme/(?P<theme>[\w\-]+)/$', views.theme, name='theme'),
-    url(r'^accounts/register/$', MyRegistrationView.as_view(form_class=UserForms), name='registration_register'),
+    url(r'^accounts/register/$', MyRegistrationView.as_view(form_class=userForms), name='registration_register'),
     (r'^accounts/', include('registration.backends.simple.urls')),
 )
      # ADD THIS NEW TUPLE!

@@ -168,10 +168,10 @@ Creamos los foros en forms.py:
 from django import forms
 from .models import Comment,User,Forum
 
-class UserForm(forms.ModelForm):
+class userForms(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('userName','name','firstName','secondName','email','password','birthday',)
+        fields = ('username','name','firstName','secondName','email','password','birthday',)
 
 class Comment(forms.ModelForm):
     class Meta:
@@ -225,10 +225,10 @@ def comment(request):
 
         com = Comments(request.POST)
 
-        userName = "usuariodeprueba"
+        username = "usuariodeprueba"
         #validamos el formulario
         if com.is_valid():
-            newComment = Comment(request.POST["theme"],idC,request.POST["title"],request.POST["commentText"],userName,request.POST["url"],datetime.date.today)
+            newComment = Comment(request.POST["theme"],idC,request.POST["title"],request.POST["commentText"],username,request.POST["url"],datetime.date.today)
             return render(request,'comentarios.html')
     else:
         com = Comment()
@@ -340,7 +340,7 @@ Obtiene el parámetro forum de las vistas y muestra una lista con los enlaces a 
           <h2>{{ c }}</h2>
           <li>{{c.title}}</li>
           <li>{{c.theme}}</li>
-          <li>{{c.userName}}</li>
+          <li>{{c.username}}</li>
           <li>{{c.commentText}}</li>
           <li>{{c.url}}</li>
           <li>{{c.date}}</li>
