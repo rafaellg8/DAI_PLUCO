@@ -331,7 +331,6 @@ Ya sólo nos falta modificar los templates de los foros y comentarios para que m
 Obtiene el parámetro forum de las vistas y muestra una lista con los enlaces a los foros
 
 
-
 2. comenarios.html:
 ```
 {% if com %}
