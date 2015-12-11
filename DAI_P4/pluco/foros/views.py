@@ -11,13 +11,44 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import datetime
 
+@login_required
 def showComments(request,theme):
     #obtenemos el foro asociado a un tema
     form = Forum.objects.get(theme=theme)
     #filtramos comentarios de un foro con un tema
-    com = Comment.objects.filter(theme=form).order_by('date')
-    context = {'com': com}
-    #render
+    comForm = Comment.objects.filter(theme=form).order_by('date')
+
+    if request.method =="POST":
+        idC = 0
+        com = Comment.objects.order_by('idComment')[:1]
+        for c in com:
+            idC = c.idComment+1
+
+        com = Comments(request.POST)
+
+        username = request.user
+        f = get_object_or_404(Forum,theme=theme)
+        #validamos el formulario
+        if com.is_valid():
+            comment = Comment()
+            comment.theme = f
+            comment.idComment = idC
+            comment.username = username
+            comment.commentText = request.POST["commentText"]
+            comment.title = request.POST["title"]
+            comment.date = datetime.date.today()
+
+            comment.save()
+
+            request.POST.delete()
+            return redirect("/foros/theme/"+theme)
+    else:
+        com = Comment.objects.order_by('idComment')[:1]
+        for c in com:
+            idC = c.idComment+1
+        com = Comment()
+
+    context = {'com': comForm,'commentForm':com}
     return render(request,'comentarios.html',context)
 
 def showForums(request):
