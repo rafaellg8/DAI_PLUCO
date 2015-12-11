@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     url(r'^foros/',include('foros.urls')),
     url(r'^comentario/',include('foros.urls')),
     url(r'^foros/theme/(?P<theme>[\w\-]+)/$', views.theme, name='theme'),
+    url(r'^foros/theme/(?P<theme>[\w\-]+)/nuevoComentario', views.comment, name='theme'),
     url(r'^accounts/register/$', MyRegistrationView.as_view(form_class=userForms), name='registration_register'),
     (r'^accounts/', include('registration.backends.simple.urls')),
 )

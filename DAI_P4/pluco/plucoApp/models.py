@@ -36,7 +36,7 @@ class Comment(models.Model):
       commentText = models.TextField(max_length=500)
       username = models.ForeignKey(User)
       date = models.DateField()
-      url = models.URLField()
+      url = models.URLField(blank=True)
 
       def __unicode__(self):
             return self.title

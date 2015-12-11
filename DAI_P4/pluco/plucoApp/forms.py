@@ -10,6 +10,7 @@ from plucoApp.models import Forum,UserProfile,Comment
 from django import forms
 from django.contrib.auth.models import User
 from registration.forms import RegistrationForm
+from django.db import models
 
 class userForms(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -30,10 +31,10 @@ class UserProfileForm(forms.ModelForm):
 class Comments(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('theme','title','commentText','url',)
+        fields = ('title','commentText','url',)
 
-    def addComment(forum,idC,tit,commentTxt,user,url,date):
-          com = Comment.objects.get_or_create(theme=forum,idComment=idC,title=tit,commentText=commentTxt,username=user,url=url,date=date)[0]
+    def addComment(self,forum,idC,tit,commentTxt,user,url,date):
+          com = Comment.objects.get_or_create(theme=forum,idComment=idC,title=tit,commentText=commentTxt,username=user,url=url,date=date)
           com.save()
           return com
 

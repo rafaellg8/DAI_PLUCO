@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 class Forum(models.Model):
@@ -29,11 +30,12 @@ class Comment(models.Model):
       título, comentario, usuario que hace el comentario,
       url donde el usuario pone la url de su archivo a compartir si procede"""
       theme = models.ForeignKey(Forum)
-      idComment = models.IntegerField(null=False)
-      title = models.CharField(max_length=128,unique=True)
+      idComment = models.IntegerField(null=False,unique=True)
+      title = models.CharField(max_length=128,blank=False)
       commentText = models.CharField(max_length=500)
       username = models.ForeignKey(User)
-      url = models.URLField()
+      date = models.DateField()
+      #url = models.URLField()
 
       def __unicode__(self):
             return self.title

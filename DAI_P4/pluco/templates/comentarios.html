@@ -43,14 +43,17 @@
 
   <br>
   {% if commentForm %}
+  <div>
   <h1>Nuevo comentario</h1>
         <form method="POST" class="post-form">{% csrf_token %}
-            {{ commentForm.as_p }}
-            <button type="submit" class="save btn btn-default">Nuevo tema</button>
+          <p>  {{ commentForm.as_p }}</p>
+            <button type="submit" class="save btn btn-default">Nuevo comentario</button>
         </form>
+  </div>
   {% else %}
-    <a href="nuevoComentario"><button type="button" name="button">Nuevo Comentario</button></a>
+    <a href="nuevoComentario">Nuevo Comentario</a>
   {% endif %}
+
 
 </div>
 {% endblock %}

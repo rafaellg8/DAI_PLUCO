@@ -93,6 +93,15 @@ DATABASES = {
     }
 }
 
+
+MONGODB_DATABASES = {
+    "default": {
+        "name": "pluco",
+        "host": "localhost",
+        "tz_aware": True, # if you using timezones in django (USE_TZ = True)
+    },
+}
+
 # Password hashes
 PASSWORD_HASHERS = (
         'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',

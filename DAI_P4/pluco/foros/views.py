@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.template import RequestContext
 from plucoApp.models import Comment,Forum,User
@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from plucoApp.forms import Forums,Comments,userForms
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 import datetime
 
 def showComments(request,theme):
@@ -26,7 +27,7 @@ def showForums(request):
     return render(request,'foros.html',context)
 
 @login_required
-def comment(request):
+def comment(request,theme):
     if request.method =="POST":
         com = Comment.objects.order_by('idComment')[:1]
         for c in com:
@@ -34,14 +35,28 @@ def comment(request):
 
         com = Comments(request.POST)
 
-        username = "usuariodeprueba"
+        username = request.user
+        f = get_object_or_404(Forum,theme=theme)
         #validamos el formulario
         if com.is_valid():
-            newComment = Comment(request.POST["theme"],idC,request.POST["title"],request.POST["commentText"],username,request.POST["url"],datetime.date.today)
-            return render(request,'comentarios.html')
+            comment = Comment()
+            comment.theme = f
+            comment.idComment = idC
+            comment.username = username
+            comment.commentText = request.POST["commentText"]
+            comment.title = request.POST["title"]
+            comment.date = datetime.date.today()
+
+            comment.save()
+
+            return (showComments(request,theme))
     else:
+        com = Comment.objects.order_by('idComment')[:1]
+        for c in com:
+            idC = c.idComment+1
         com = Comment()
-    return render(request,'comentarios.html',{'commentForm':com},context_instance=RequestContext(request))
+
+    return render(request,'comentarios.html',{'commentForm':com})
 
 @login_required
 def forums(request):
