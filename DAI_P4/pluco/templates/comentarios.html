@@ -21,20 +21,15 @@
 {% block articuloPrincipal %}
 
 <div>
-  <h3>Foros</h3>
-  <br><br><br>
-  <h2>Lista de Foros</h2>
+  <h3>Foros:Tema-{{theme}}</h3>
 
-
-  <h1>Lista Comentarios </h1>
-
+  <br><br><br><br><br>
   {% if com %}
       {% for c in com %}
         <ul style="border: 1px solid black">
-            <h2>{{ c }}</h2>
-            <li>{{c.theme}}</li>
-            <li>{{c.username}}</li>
-            <li>{{c.commentText}}</li>
+            <li><strong>{{ c }}</strong></li>
+            <li><strong style="float: left;margin-right: 100px">User:</strong>{{c.username}}</li>
+            <li><section style="border: 1px solid black; background-color: #ffffcc;">{{c.commentText}}</secton></li>
             <li>{{c.url}}</li>
             <li>{{c.date}}</li>
         </ul>

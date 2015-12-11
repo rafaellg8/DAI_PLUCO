@@ -40,22 +40,34 @@ def showComments(request,theme):
 
             comment.save()
 
-            request.POST.delete()
-            return redirect("/foros/theme/"+theme)
+            return redirect("/foros/theme/"+theme,{'com': comForm,})
     else:
         com = Comment.objects.order_by('idComment')[:1]
         for c in com:
             idC = c.idComment+1
         com = Comment()
 
-    context = {'com': comForm,'commentForm':com}
+    context = {'com': comForm,'commentForm':com,'theme': theme}
     return render(request,'comentarios.html',context)
 
 def showForums(request):
     com = Forum.objects.all()
     context = {'forum': com}
-    #render
-    return render(request,'foros.html',context)
+
+    if request.method =="POST":
+        form = Forums(request.POST)
+        #validamos el formulario
+        if form.is_valid():
+            newForum = Forum()
+            newForum.title = request.POST["title"]
+            newForum.theme = request.POST["theme"]
+            newForum.asignature = request.POST["asignature"]
+            newForum.save()
+
+            return redirect("/foros")
+    else:
+        form = Forum()
+    return render(request,'foros.html', {'forum': com,'form': form})
 
 @login_required
 def comment(request,theme):
@@ -99,7 +111,7 @@ def forums(request):
             return render(request,'foros.html', {'form': form},context_instance=RequestContext(request))
     else:
         form = Forum()
-    return render(request,'foros.html', {'form': form},context_instance=RequestContext(request))
+    return render(request,'foros.html', {'form': form},)
 
 def theme(request,theme):
 
