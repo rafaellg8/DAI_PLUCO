@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block title %}
+  {% if user %}
+    {{user}}
+  {% else %}
+    Principal
+    {% endif %}
+{% endblock %}
+
+{% load static %}
+{% block panelLateral %}
+{% endblock %}
+{% block cabeceraTitulo %}
+
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+{% block articuloPrincipal %}
+{% if user.is_authenticated %}
+  <div>
+    <h3>Bienvenido: </h3>
+    <h3 style="float: left;margin-left: 200px">{{user.username}}</h3>
+  </div>
+{% else %}
+<div>
+  <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
+  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra %}
+ <div class="col-sm-8 text-left" style="float: left">
+   <h1>Acerca de:</h1>
+     <p>Tecnología usada <strong>Bootstrap</strong> y <strong>Django 1.8</strong></p>
+ </div>
+
+ <div class="col-sm-8 text-left" style="float: left">
+   <h1>Motor de BD:</h1>
+     <p>SQLite 3<p>
+     <p> App desplegada en Heroku <a href="http://pluco.herokuapp.com">http://pluco.herokuapp.com</a></p>
+ </div>
+{% endblock %}

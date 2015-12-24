@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block title %}
+    Login
+{% endblock %}
+
+{% block panelLateral %}
+{% endblock %}
+{% block cabeceraTitulo %}
+
+<div class="botonera">
+  <a href="/login"><button>login</button></a>
+  <a <a href="/plucoApp/register/"><button>register</button></a>
+</div>
+
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+{% block articuloPrincipal %}
+
+  <div>
+    <h4>LOGIN: </h4>
+  </div>
+
+<div>
+
+  <form id="login_form" action="/plucoApp/login/" method="post">
+      {% csrf_token %}
+            <p><input type=text name=username>
+            <p><input type=password name=password>
+            <p><input type=submit value=Login>
+        </form>
+
+  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
+
+</div>
+{% endblock %}
+
+{% block extra %}
+{% endblock %}

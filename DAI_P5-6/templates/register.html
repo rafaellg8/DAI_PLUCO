@@ -1,0 +1,51 @@
+{% extends "index.html" %}{% block title %}Registro{% endblock %}
+
+{% block cabeceraTitulo %}
+{% endblock %}
+{% block panelLateral %}
+{% endblock %}
+{% block articuloPrincipal %}
+
+<h3>PLUCO - Registro </h3>
+{% if registered %}
+       Registro completado!!!: <strong>Gracias por registrarte!</strong>
+       <a href="/">Home</a><br />
+       {% else %}
+       Registro: <strong>regístrate aquí!</strong><br />
+
+       <form id="user_form" method="post" action="/plucoApp/register/"
+               enctype="multipart/form-data">
+
+           {% csrf_token %}
+
+           <!-- Display each form. The as_p method wraps each element in a paragraph
+                (<p>) element. This ensures each element appears on a new line,
+                making everything look neater. -->
+           <div class="form-group">
+           <p class="required"> <label for="id_username">username:</label>
+               <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  placeholder="Enter username"/></p>
+          </div>
+           <div class="form-group">
+              <p class="required"><label for="id_email">E-mail:</label>
+                  <input class="form-control" id="id_email" name="email" type="email" placeholder="Enter email" /></p>
+           </div>
+          <div class="form-group">
+              <p class="required"><label for="id_password">Password:</label>
+                  <input class="form-control" id="id_password" name="password" type="password" placeholder="Enter password" /></p>
+          </div>
+
+          <div class="form-group">
+              <p class="required"><label for="id_address">Direccion:</label>
+           <input class="form-control" id="id_address" name="address" type="address" placeholder="C/Street number,City" /></p>
+          </div>
+
+          <div class="form-group">
+              <p><label for="id_picture">Picture:</label> <input id="id_picture" name="picture" type="file" /></p>
+           <!-- Provide a button to click to submit the form. -->
+           <input type="submit" name="submit" value="Register" />
+       </form>
+       {% endif %}
+{% endblock %}
+
+{% block extra %}
+{% endblock %}

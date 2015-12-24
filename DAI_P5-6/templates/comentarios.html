@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+{% block title %}
+  {% if usuario %}
+    {{usuario}} - Foros
+  {% else %}
+    Foros
+    {% endif %}
+{% endblock %}
+
+{% load static %}
+{% block panelLateral %}
+{% endblock %}
+{% block cabeceraTitulo %}
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+{% block articuloPrincipal %}
+
+<div>
+  <h3>Foros:Tema-{{theme}}</h3>
+
+  <br><br><br><br><br>
+  {% if com %}
+      {% for c in com %}
+        <ul style="border: 1px solid black">
+            <li><strong>{{ c }}</strong></li>
+            <li><strong style="float: left;margin-right: 100px">User:</strong>{{c.username}}</li>
+            <li><section style="border: 1px solid black; background-color: #ffffcc;">{{c.commentText}}</secton></li>
+            <li>{{c.date}}</li>
+        </ul>
+            {% endfor %}
+  {% endif %}
+
+  <br>
+  {% if commentForm %}
+  <div>
+  <h1>Nuevo comentario</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+          <p>  {{ commentForm.as_p }}</p>
+            <button type="submit" class="save btn btn-default">Nuevo comentario</button>
+        </form>
+  </div>
+  {% else %}
+    <a href="nuevoComentario">Nuevo Comentario</a>
+  {% endif %}
+
+
+</div>
+{% endblock %}
+
+{% block extra %}
+{% endblock %}

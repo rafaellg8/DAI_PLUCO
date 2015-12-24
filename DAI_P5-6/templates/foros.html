@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% block title %}
+  {% if usuario %}
+    {{usuario}} - Foros
+  {% else %}
+    Foros
+    {% endif %}
+{% endblock %}
+
+{% load static %}
+{% block panelLateral %}
+{% endblock %}
+{% block cabeceraTitulo %}
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+{% block articuloPrincipal %}
+
+<div>
+  <h3>Foros</h3>
+  <br><br><br>
+  <h2>Lista de Foros</h2>
+
+  {% if forum %}
+            {% for f in forum %}
+             <ul style="border: 1px dashed black;margin-top: 10px;">
+                 <!-- Following line changed to add an HTML hyperlink -->
+                 <li style="float: left;margin-right: 250px;margin-top: 5px;margin-bottom: 5px"><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></li>
+             </ul>
+             {% endfor %}
+  {% endif %}
+
+</div>
+{% endblock %}
+
+{% block extra %}
+<div style="margin-top: 5%">
+<h2>Abrir tema/Foro</h2>
+      <form method="POST" class="post-form">{% csrf_token %}
+         {{form.as_p}}
+          <button type="submit" class="save btn btn-default">Nuevo tema</button>
+      </form>
+</div>
+{% endblock %}

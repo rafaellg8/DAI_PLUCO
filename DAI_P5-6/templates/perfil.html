@@ -1,0 +1,40 @@
+{% extends "index.html" %}{% block title %}{{user}}{% endblock %}
+{% load easy_maps_tags %}
+{% block cabeceraTitulo %}
+<div>
+  <h3><span class="beauty">PLUCO</span></h3>
+  <p style="float: left;margin-right: 400px;margin-top: 20px">
+    Plataforma Universitaria Compartición Conocimiento
+  </p>
+</div>
+{% endblock %}
+{% block panelLateral %}
+
+{% endblock %}
+{% block articuloPrincipal %}
+{% if user %}
+  <div>
+    <h3>Bienvenido: </h3>
+    <h3 style="float: left;margin-left: 200px">{{user}}</h3>
+    <br><br><br><br>
+    <h4>Datos usuario:</h4>
+  </div>
+  <div style="border: 1px black dashed;margin-top: 10px;margin-bottom: 10px">
+    <p>Nombre: {{user}} </p>
+    <p> Avatar : <img src=/media/{{user.picture}} width="20%" height="20%" style="border: 1px solid black"></p>
+    <p> Email: {{user.user.email}} </p>
+    <div>{% easy_map user.address 300 400 using 'map.html' %}</div>
+  </div>
+{% else %}
+{% endif %}
+{% endblock %}
+
+{% block extra %}
+<div style="margin-top: 5%">
+<h2>Modificar mis datos</h2>
+      <form method="POST" class="post-form">{% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="save btn btn-default">Modificar mis datos</button>
+      </form>
+</div>
+{% endblock %}
