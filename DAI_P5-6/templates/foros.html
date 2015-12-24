@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "activity.html" %}
 {% block title %}
   {% if usuario %}
     {{usuario}} - Foros
@@ -8,41 +8,52 @@
 {% endblock %}
 
 {% load static %}
-{% block panelLateral %}
-{% endblock %}
-{% block cabeceraTitulo %}
-<div>
-  <h3><span class="beauty">PLUCO</span></h3>
-  <p style="float: left;margin-right: 400px;margin-top: 20px">
-    Plataforma Universitaria Compartición Conocimiento
-  </p>
-</div>
-{% endblock %}
-{% block articuloPrincipal %}
+{% block masOpciones %}
 
-<div>
-  <h3>Foros</h3>
-  <br><br><br>
-  <h2>Lista de Foros</h2>
+<section id="portfolio" class="portfolio background-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-log-10 col-lg-offset-1 text-left">
+          <h1>Foros</h1>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+                <h2>Lista de Foros</h2>
+            </div>
 
-  {% if forum %}
-            {% for f in forum %}
-             <ul style="border: 1px dashed black;margin-top: 10px;">
-                 <!-- Following line changed to add an HTML hyperlink -->
-                 <li style="float: left;margin-right: 250px;margin-top: 5px;margin-bottom: 5px"><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></li>
-             </ul>
-             {% endfor %}
-  {% endif %}
+              {% if forum %}
+                    <div style="float: left">
+                        {% for f in forum %}
+                             <!--Following line changed to add an HTML hyperlink -->
+                             <h4><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></h4>
+                         {% endfor %}
+                         </div>
 
-</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 {% endblock %}
 
-{% block extra %}
-<div style="margin-top: 5%">
-<h2>Abrir tema/Foro</h2>
-      <form method="POST" class="post-form">{% csrf_token %}
-         {{form.as_p}}
-          <button type="submit" class="save btn btn-default">Nuevo tema</button>
-      </form>
-</div>
+
+{% block articuloPrincipal %}{% endblock %}
+
+{% block botonesExtra %}
+<aside class="call-to-action bg-primary">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h3>Abrir tema/Foro</h3>
+          <form method="POST" class="post-form">{% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-lg btn-dark">Nuevo tema</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</aside>
 {% endblock %}
+
+{% block map %}{% endblock %}
