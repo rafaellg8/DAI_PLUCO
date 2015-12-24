@@ -11,24 +11,30 @@
 {% block panelLateral %}
 {% endblock %}
 {% block cabeceraTitulo %}
-
-<div>
-  <h3><span class="beauty">PLUCO</span></h3>
-  <p style="float: left;margin-right: 400px;margin-top: 20px">
-    Plataforma Universitaria Compartición Conocimiento
-  </p>
-</div>
-{% endblock %}
-{% block articuloPrincipal %}
-{% if user.is_authenticated %}
+<header id="top" class="header">
+  <div style="margin-top: 10%;margin-left: 10%">
+    <div class="text-vertical-center">
+        <img src="{% static 'images/logo.png' %}">
+        <h1>PLUCO</h1>
+        <h3>Comparte el Conocimiento</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Empezar</a>
+    </div>
   <div>
-    <h3>Bienvenido: </h3>
-    <h3 style="float: left;margin-left: 200px">{{user.username}}</h3>
+</header>
+{% endblock %}
+
+{% block articuloPrincipal %}
+{% if user.is_authenticated or user%}
+  <div>
+    <h1 style="font-size: 520%">Bienvenido: {{user}}</h1>
+    <br>
+    <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
   </div>
 {% else %}
 <div>
+  <br>
   <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
-  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
 </div>
 {% endif %}
 {% endblock %}
@@ -45,3 +51,7 @@
      <p> App desplegada en Heroku <a href="http://pluco.herokuapp.com">http://pluco.herokuapp.com</a></p>
  </div>
 {% endblock %}
+
+{% block botonesExtra %}{% endblock %}
+{% block map %}{% endblock %}
+{% block masOpciones %}{% endblock %}
