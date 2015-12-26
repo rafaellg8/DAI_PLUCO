@@ -87,7 +87,7 @@
     <header id="top" class="headerB">
       <div style="float: right;margin-right: 20%;margin-top: 5%">
         <div class="text-vertical-center">
-            <h1 style="color: white">PLUCO</h1>
+            <h1 style="color: white;font-size: 350%">PLUCO</h1>
         </div>
       <div>
     </header>
@@ -189,6 +189,7 @@
 
    <!-- Services -->
    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+   {% block servicios %}
    <section id="services" class="services bg-primary">
        <div class="container">
            <div class="row text-center">
@@ -259,6 +260,7 @@
        </div>
        <!-- /.container -->
    </section>
+   {% endblock %}
 
     <!-- Map -->
     {% block map %}

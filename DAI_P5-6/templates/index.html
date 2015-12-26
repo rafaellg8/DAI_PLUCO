@@ -34,6 +34,7 @@
 
 <body>
 
+  {% block menuNavegacion %}
   <!-- Navigation -->
    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
    <nav id="sidebar-wrapper">
@@ -80,7 +81,7 @@
            </li>
        </ul>
    </nav>
-
+   {% endblock %}
 
     <!-- Header -->
     {% block cabeceraTitulo %}
@@ -113,6 +114,7 @@
 
     <!-- Services -->
     <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    {% block servicios %}
     <section id="services" class="services bg-primary">
         <div class="container">
             <div class="row text-center">
@@ -183,6 +185,7 @@
         </div>
         <!-- /.container -->
     </section>
+    {% endblock %}
 
     <!-- Callout -->
     <article class="row-content" style="padding: 1% 1% 1% 1%">

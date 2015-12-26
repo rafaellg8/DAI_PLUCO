@@ -23,10 +23,16 @@
 
               {% if forum %}
                     <div style="float: left">
+                      <table >
                         {% for f in forum %}
                              <!--Following line changed to add an HTML hyperlink -->
-                             <h4><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></h4>
+                             <tr>
+                               <th>
+                                 <h4><a href="/foros/theme/{{ f.theme }}">{{ f.title }}</a></h4>
+                               </th>
+                             </tr>
                          {% endfor %}
+                      </table>
                          </div>
 
               {% endif %}
@@ -41,10 +47,10 @@
 {% block articuloPrincipal %}{% endblock %}
 
 {% block botonesExtra %}
-<aside class="call-to-action bg-primary">
+<aside class="call-to-action bg-primary bt-Extra">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 text-left">
+      <div class="col-lg-20 text-left">
         <h3>Abrir tema/Foro</h3>
           <form method="POST" class="post-form">{% csrf_token %}
             {{form.as_p}}

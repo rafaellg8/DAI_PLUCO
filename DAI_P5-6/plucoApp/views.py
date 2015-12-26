@@ -17,9 +17,9 @@ def index(request):
         registered = True
         try:
             us = UserProfile.objects.get(user=request.user)
+            return render(request, 'perfil.html',{'user': us})
         except:
             us = False
-            return render(request, 'hijo.html',{'user': us})
     else:
         us = False
     return render(request, 'hijo.html',{'user': us})
@@ -132,7 +132,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/perfil')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Cuenta inactiva, cierra sesión automático")
