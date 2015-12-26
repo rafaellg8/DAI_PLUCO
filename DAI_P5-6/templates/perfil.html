@@ -3,30 +3,54 @@
 
 {% block panelLateral %}
 {% endblock %}
+
 {% block masOpciones %}
 {% if user %}
-  <div>
-    <h3>Bienvenido: </h3>
-    <h3 style="float: left;margin-left: 200px">{{user}}</h3>
-    <br><br><br><br>
-    <h4>Datos usuario:</h4>
+<article class="container">
+  <div class="row">
+    <div>
+      <div>
+        <h3>Bienvenido: </h3>
+        <h3 >{{user}}</h3>
+      </div>
+      <hr>
+      <div style="padding-bottom: 14px">
+        <h4>Datos usuario:</h4>
+        <div style="padding: 1px 12px;background-color: lightgrey">
+          <p>Nombre: {{user}} </p>
+          <img src=/media/{{user.picture}} width="20%" height="20%" style="border: 1px solid black">
+          <p> Email: {{user.user.email}} </p>
+        <div>
+      </div>
   </div>
-  <div style="border: 1px black dashed;margin-top: 10px;margin-bottom: 10px">
-    <p>Nombre: {{user}} </p>
-    <p> Avatar : <img src=/media/{{user.picture}} width="20%" height="20%" style="border: 1px solid black"></p>
-    <p> Email: {{user.user.email}} </p>
-    <div>{% easy_map user.address 300 400 using 'map.html' %}</div>
-  </div>
+</div>
+</article>
 {% else %}
 {% endif %}
 {% endblock %}
 
-{% block extra %}
-<div style="margin-top: 5%">
-<h2>Modificar mis datos</h2>
-      <form method="POST" class="post-form">{% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit" class="save btn btn-default">Modificar mis datos</button>
-      </form>
-</div>
+
+{% block botonesExtra %}
+<aside class="bg-primary" style="padding-bottom: 10px">
+    <div class="container">
+        <div class="row">
+            <div class="col text-left">
+              <h3>Modificar mis datos</h3>
+              <form method="POST" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="save btn btn-dark">Modificar mis datos</button>
+              </form>
+        </div>
+    </div>
+   </div>
+ </aside>
+
+{% endblock %}
+
+{% block articuloPrincipal %}{% endblock %}
+{% block servicios %}{% endblock %}
+{% block about %}{% endblock %}
+
+{% block map %}
+<div>{% easy_map user.address 300 400 using 'map.html' %}</div>
 {% endblock %}
