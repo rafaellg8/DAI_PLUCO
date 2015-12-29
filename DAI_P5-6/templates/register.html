@@ -22,7 +22,7 @@
 
                        <!-- Display each form. The as_p method wraps each element in a paragraph
                             (<p>) element. This ensures each element appears on a new line,
-                            making everything look neater. -->
+                            making everything look neater. --
                        <div class="form-group">
                        <p class="required"> <label for="id_username">username:</label>
                            <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  placeholder="Enter username"/></p>
@@ -49,7 +49,11 @@
                       <div class="form-group">
                           <p><label for="id_picture">Picture:</label> <input id="id_picture" name="picture" type="file" /></p>
                        <!-- Provide a button to click to submit the form. -->
+                       <div class="form-group">
+                       {{user_form.as_p}}
+                       {{profile_form.as_p}}
                        <input class="btn bt-lg btn-dark" type="submit" name="submit" onclick='return (verif(this.form));' value="Confirmar" />
+                     </div>
                    </form>
                  </div>
                </div>
@@ -57,15 +61,6 @@
            </div>
           {% endif %}
 
-          {% for field in user_form %}
-    <div class="fieldWrapper">
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
-        {% if field.help_text %}
-        <p class="help">{{ field.help_text|safe }}</p>
-        {% endif %}
-    </div>
-{% endfor %}
 </aside>
 {% endblock %}
 

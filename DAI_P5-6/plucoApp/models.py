@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-    address = models.CharField(max_length=50,help_text="dirección postal")
+    address = models.TextField(max_length=50,help_text="dirección postal")
     picture = models.ImageField(upload_to='media', blank=True)
 
     # Return the user, for a request.user

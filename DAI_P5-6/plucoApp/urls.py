@@ -11,6 +11,7 @@ urlpatterns = patterns('',
         url(r'^login/$',views.user_login,name='login'),
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^perfil/$',views.user_profile,name='perfil'),
+        url(r'^perfil/edit$',views.user_editData,name='edit'),
         url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': settings.DEBUG}),
     )
 

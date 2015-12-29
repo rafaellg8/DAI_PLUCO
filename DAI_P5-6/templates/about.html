@@ -4,31 +4,53 @@
 {% endblock %}
 
 {% load static %}
-{% block panelLateral %}
-{% endblock %}
-{% block cabeceraTitulo %}
 
-<div>
-  <h3><span class="beauty">PLUCO</span></h3>
-  <p style="float: left;margin-right: 400px;margin-top: 20px">
-    Plataforma Universitaria Compartición Conocimiento
-  </p>
-</div>
-{% endblock %}
+
 {% block articuloPrincipal %}
-<div>
-  <p>Se trata de una plataforma académica de compartición de archivos de la Universidad de Granada, que permite la colaboración en grupo entre los usuarios del sistema.</p>
+<article class="row-content">
+  <h1 style="font-size: 350%;font-weight: bold;color: grey">PLUCO: Plataforma Universitaria del Conocimiento</h1>
+    <div class="col-sm-8 text-left articuloPrincipal">
 
-  <p style="float: right;margin-top: -18%;margin-right: 0px;">Desarrollado por: <strong>Rafael Lachica Garrido</strong></p>
+      <h1><a id="user-content-plataforma-universitaria-de-comparticiÓn-de-conocimientos-pluco" class="anchor" href="#plataforma-universitaria-de-comparticiÓn-de-conocimientos-pluco" aria-hidden="true"><span class="octicon octicon-link"></span></a>PLATAFORMA UNIVERSITARIA DE COMPARTICIÓN DE CONOCIMIENTOS: PLUCO</h1>
 
-  <p> Curso 2015 - 2016 . Granada </p>
+      <h3><a id="user-content-introducción" class="anchor" href="#introducción" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introducción</h3>
 
-  <p><a href="http://www.github.com/rafaellg8/">Acerca de</a></p>
+      <p>Plataforma académica de compartición de archivos de la Universidad de Granada, y que permita la colaboración en grupo entre los usuarios del sistema. Añade servicios de mensajería y foros,potenciando la interacción de los usuarios, y agrupando a los mismos por varios grupos de o bien asignaturas o cursos.</p>
 
-  <p> Bajo Licencia Apache V3 </p>
+      <h3><a id="user-content-seguridad" class="anchor" href="#seguridad" aria-hidden="true"><span class="octicon octicon-link"></span></a>Seguridad</h3>
 
-</div>
+      <p>En cuanto a la seguridad de nuestra plataforma los objetivos son: Permitir tener un sistema seguro en el que se separen datos sensibles y credenciales de los usuarios, y por otra parte archivos de los mismos. Por otra parte tendremos una web con foros que si es atacada no compremete la privacidad de los usuarios ni sus archivos.</p>
+
+      <h3><a id="user-content-infraestuctura" class="anchor" href="#infraestuctura" aria-hidden="true"><span class="octicon octicon-link"></span></a>Infraestuctura</h3>
+
+      <h4><a id="user-content-red-social-pluco" class="anchor" href="#red-social-pluco" aria-hidden="true"><span class="octicon octicon-link"></span></a>Red Social PLUCO</h4>
+
+      <p>Mi propósito viene a ser implementar una red social en la que los usuarios puedan participar en la compartición
+      del conocimiento y apoyo en problemas que puedan surgir en las asignaturas o tareas determinadas.
+      <p>
+
+  </div>
+</article>
 {% endblock %}
 
-{% block extra %}
+
+{% block masOpciones %}
+{% endblock %}
+
+{% block botonesExtra %}{% endblock %}
+{% block map %}{% endblock %}
+
+{% block about %}
+<section id="about" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Plataforma Universitaria de Compartición del Conocimiento</h2>
+                <p class="lead">Desarrollado por: <a target="_blank" href="http://github.com/rafaellg8/">Rafael Lachica Garrido</a>.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
 {% endblock %}

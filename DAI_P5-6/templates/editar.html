@@ -64,19 +64,41 @@
       <div style="padding-bottom: 14px">
         <h4>Datos usuario:</h4>
         <div style="padding: 1px 12px;background-color: lightgrey">
-          <p>Nombre: {{user}} </p>
-          <img src=/media/{{user.picture}} width="10%" height="10%" style="border: 1px solid black">
-          <p> Email: {{user.user.email}} </p>
-          <section id="contact" class="map">
-              <small>
-                  <h1>Dirección:{{user.address}}</h1>
-                  {% easy_map  user.address 900 400 using "easy_maps/map.html" %}
-              </small>
 
-          </section>
+          <form class="" action="/perfil/edit" method="post">
+               {% csrf_token %}
+               <div class="form-group">
+               <p class="required"> <label for="id_username">nombre usuario:</label>
+                   <input class="form-control"  id="id_username" maxlength="30" name="username" type="text"  value={{user.user.username}} />{{user.user.username}}</p>
+              </div>
 
-        <div>
-      </div>
+              <div class="form-group">
+              <p class="required"> <label for="id_email">email:</label>
+                  <input class="form-control"  id="id_email" maxlength="30" name="email" type="text"  value={{user.user.email}} />{{user.user.email}}</p>
+             </div>
+
+             <div class="form-group">
+             <p class="required"><label for="id_address">Dirección postal:</label>
+                 <input class="form-control"  id="id_address" name="address" type="text" value="{{address}}" />{{user.address}}</p>
+            </div>
+
+            <div class="form-group">
+              <p><label for="id_picture">Avatar:</label> <input id="id_picture" name="picture" type="file" /></p>
+            </div>
+
+            <div class="form-group">
+            <p class="required"> <label for="id_password">Cambiar Contraseña:</label>
+                <input class="form-control"  id="id_password" maxlength="30" name="password" type="password"  value="" /></p>
+           </div>
+
+           <div class="form-group">
+           <p class="required"> <label for="id_password2">Confirmar contraseña:</label>
+               <input class="form-control"  id="id_password2" maxlength="30" name="password2" type="password"  value="" /></p>
+          </div>
+             <button type="submit" action="/perfil/edit" class="save btn btn-dark">Guardar</button>
+          </form>
+
+
   </div>
 </div>
 </article>
@@ -86,17 +108,6 @@
 
 
 {% block botonesExtra %}
-<aside class="bg-primary" style="padding-bottom: 10px">
-    <div class="container">
-        <div class="row">
-            <div class="col text-left">
-              <h3>Modificar mis datos</h3>
-                <a href="/perfil/edit" class="btn btn-lg btn-dark">Editar perfil</a>
-        </div>
-    </div>
-   </div>
- </aside>
-
 {% endblock %}
 
 {% block articuloPrincipal %}{% endblock %}

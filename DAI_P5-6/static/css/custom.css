@@ -9,11 +9,6 @@
 
 .background-portfolio {
   padding-left: 8%;
-  background: @include filter-gradient(#ffffff,#ededed,horizontal);
-  background: @include background-image(linear-gradient(left,
-    rgba(255, 255, 255, 1)0%,
-    rgba(246,246,246,1)47%,
-    rgba(237,237,237,1)100%);
 }
 
 .background-comentario {
@@ -40,4 +35,12 @@
     border-top-right-radius:5px;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
+}
+
+.articuloPrincipal {
+  background: url(../images/articuloPrincipal.jpg) no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: 10%;
 }
