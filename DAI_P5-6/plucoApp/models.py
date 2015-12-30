@@ -17,7 +17,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-    address = models.TextField(max_length=50,help_text="dirección postal")
+    email = models.EmailField(max_length=30,help_text="dirección email")
+    address = models.CharField(max_length=30,help_text="dirección postal")
     picture = models.ImageField(upload_to='media', blank=True)
 
     # Return the user, for a request.user
@@ -40,6 +41,9 @@ class Comment(models.Model):
       commentText = models.TextField(max_length=500,help_text="Introduce aquí tu comentario")
       username = models.ForeignKey(User)
       date = models.DateField()
+      likes = models.IntegerField(null=True,default=0)
+      #Usuario que da a me gusta
+      #like_user = models.ForeignKey(User)
       #url = models.URLField(blank=True)
 
       def __unicode__(self):

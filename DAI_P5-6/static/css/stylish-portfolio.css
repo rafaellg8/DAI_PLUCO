@@ -49,6 +49,10 @@ body {
 
 }
 
+textarea {
+  color: black;
+}
+
 .register {
   border: 1px solid black;
   -moz-border-radius-topleft: 5px;
@@ -340,6 +344,24 @@ input {
     .map {
         height: 75%;
     }
+}
+
+/* ---------------- Imágenes --------------*/
+/*Bordes redondeados*/
+.post-body img {
+padding:0;
+border:0;
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+}
+.post-body img:hover {
+border-radius: 50%; /* Borde redondeado */
+box-shadow: 0px 0px 15px #000; /* Sombra */
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+cursor:pointer;
 }
 
 /* Footer */

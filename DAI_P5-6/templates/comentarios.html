@@ -30,15 +30,29 @@
                       <tr>
                         <th>
                           <p><h4 style="font-weight: bold">{{ c }}</h4></p>
+                          <p><h4 style="font-weight: bold">{{ c.idComment }}</h4></p>
                         </th>
                       </tr>
                       <tr>
-                        <td><p><strong>Usuario: </strong>{{c.username}}</p>
-                        <p class="comentario">{{c.commentText}}</p></td>
+                        <td><p><img src=/media/{{user.picture}}>{{c.username}}</p></td>
                       </tr>
                       <tr>
+                        <td><p class="comentario">{{c.commentText}}</p></td>
+                      </tr>
+                        <tr>
                         <td><p>{{c.date}}</p></td>
                       </tr>
+
+                      <tr>
+                        <td>
+                          <b id="like_count">{{ c.likes }}</b> people like this category
+
+                         <button id='likes' data-catid={{ c.idComment }} class="btn btn-primary" type="button">
+    <span class="fa fa-thumbs-o-up"></span>
+    Like
+    </button>
+                      </td>
+                    </tr>
                       </tbody>
                     </table>
                    {% endfor %}

@@ -3,12 +3,14 @@
 from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,render_to_response
+from django.template import RequestContext, loader
 from plucoApp.forms import userForms,UserProfileForm
 from plucoApp.models import UserProfile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout
 from unidecode import unidecode
 
@@ -50,35 +52,16 @@ def user_profile(request):
     return render(request,'perfil.html',{'user' : us})
 
 def register(request):
-    # A boolean value for telling the template whether the registration was successful.
-    # Set to False initially. Code changes value to True when registration succeeds.
-    registered = False
+    if request.method == 'POST':  # If the form has been submitted...
+        #creamos el formulario de doble password
+        #creamos el formulario completo de email etc
+        form = UserCreationForm(request.POST)
+        profile = UserProfileForm(request.POST)
+        if form.is_valid() and profile.is_valid():  # All validation rules pass
+            # Process the data in form.cleaned_data
+            user = form.save()  # Save new user attributes and get the user in the return
 
-    # If it's a HTTP POST, we're interested in processing form data.
-    if request.method == 'POST':
-        # Attempt to grab information from the raw form information.
-        # Note that we make use of both userForms and UserProfileForm.
-        request.POST["address"]=unidecode(request.POST["address"])
-        print request.POST["address"]
-        user_form = userForms(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
-
-        # If the two forms are valid...
-        if user_form.is_valid() and profile_form.is_valid():
-            # Save the user's form data to the database.
-            request.POST["address"]=unidecode(request.POST["address"])
-            print request.POST["address"]
-            user = user_form.save()
-
-            # Now we hash the password with the set_password method.
-            # Once hashed, we can update the user object.
-            user.set_password(user.password)
-            user.save()
-
-            # Now sort out the UserProfile instance.
-            # Since we need to set the user attribute ourselves, we set commit=False.
-            # This delays saving the model until we're ready to avoid integrity problems.
-            profile = profile_form.save(commit=False)
+            profile = profile.save(commit=False)
             profile.user = user
 
             # Did the user provide a profile picture?
@@ -93,23 +76,14 @@ def register(request):
 
             # Update our variable to tell the template registration was successful.
             registered = True
-
-        # Invalid form or forms - mistakes or something else?
-        # Print problems to the terminal.
-        # They'll also be shown to the user.
-        else:
-            print user_form.errors, profile_form.errors
-
-    # Not a HTTP POST, so we render our form using two ModelForm instances.
-    # These forms will be blank, ready for user input.
+            #Pasamos una variable para que marque el registro como correcto
+            return HttpResponseRedirect('/perfil',{'registered': True})  # Redirect after POST
     else:
-        user_form = userForms()
-        profile_form = UserProfileForm()
+        form = UserCreationForm()
+        profile = UserProfileForm()
+    return render_to_response('register.html', {'user_form': form,'profile_form': profile}, context_instance=RequestContext(request))
 
-    # Render the template depending on the context.
-    return render(request,
-            'register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
+
 
 """ Editar perfil """
 @login_required
@@ -119,33 +93,37 @@ def user_editData(request):
     if request.POST:
         user = User.objects.get(username=request.user.username)
         user.username=request.POST.get('username')
-        user.email=request.POST.get('email')
 
         #Comprobamos que ambas contraseñas sean correctas
         if request.POST.get('password')!= "" and request.POST.get('password')==request.POST.get('password2'):
             user.set_password(request.POST.get('password'))
+            modified = True
         user.save()
 
+        #obtenemos el usuario
         userProfile = UserProfile.objects.get(user=request.user)
+        #obtenemos email
+        userProfile.email=request.POST.get('email')
         #Quitamos las tildes de la direccion
         address = unidecode(request.POST["address"])
         userProfile.address = address
 
+        #Comprobamos que exista foto
+        if 'picture' in request.FILES:
+            userProfile.picture = request.FILES.get('picture',"")
 
-        userProfile.picture = request.FILES.get('picture',"")
-        print userProfile.picture
-
+        #Guardamos los datos
         userProfile.save()
 
-        return HttpResponseRedirect('/perfil')
+        #mostramos el perfil
+        return render(request,'perfil.html',{'user': userProfile,'update': True})
+
     else:
         try:
             us = UserProfile.objects.get(user=request.user)
-            address = us.address
-            return render(request, 'editar.html',{'user': us,'address': address})
+            return render(request, 'editar.html',{'user': us})
         except:
-            us = False
-    return render(request, 'editar.html',{'user': us})
+            return render(request, 'editar.html')
 
 
 def user_login(request):

@@ -23,7 +23,7 @@ class userForms(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('address', 'picture')
+        fields = ('email','address', 'picture')
 
     def addUser(username,firstname,email,password,address,picture):
           u = UserProfile.objects.get_or_create(username=username,first_name=firstname,email=email,password=password,address=address,picture=picture)[0]

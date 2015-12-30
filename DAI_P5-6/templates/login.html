@@ -60,13 +60,13 @@
         <br>
     </div>
   </div>
-  <aside  class="text-vertical-center login" style="float: right;margin-right: 20%">
-    <h1 style="color: white;font-size: 280%;font-weight: bold ">LOGIN:</h1>
-      <form id="login_form" action="/plucoApp/login/" method="post" style="padding-left: 20%;padding-right: 20%">
+  <aside  class="text-vertical-left login" style="float: right;margin-right: 20%">
+    <h1 style="color: white;font-size: 200%;font-weight: bold ">LOGIN:</h1>
+      <form id="login_form" action="/plucoApp/login/" method="post" style="padding-left: 1px;padding-right: 1px">
                 {% csrf_token %}
                       <p><input type=text name=username placeholder="nombre usuario">
-                      <p><input type=password name=password placeholder="contraseña">
-                      <p><input type=submit value=Login>
+                      <input type=password name=password placeholder="contraseña"></p>
+                      <p><input type=submit value=Login></p>
       </form>
   </aside>
 </header>

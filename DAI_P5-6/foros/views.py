@@ -106,6 +106,26 @@ def comment(request,theme):
 
     return render(request,'comentarios.html',{'commentForm':com})
 
+
+@login_required
+def like_comment(request):
+    context = RequestContext(request)
+    cat_id = None
+
+    if request.method == 'GET':
+        cat_id = request.GET.get('idComment','')
+        #No encuentra la categoria
+    likes = 0
+    if cat_id:
+        category = Comment.objects.get(id=int(cat_id))
+        if category:
+            likes = category.likes + 1
+            category.likes =  likes
+            category.save()
+
+    return HttpResponse(likes)
+
+
 @login_required
 def forums(request):
     if request.method =="POST":

@@ -63,7 +63,7 @@
       <hr>
       <div style="padding-bottom: 14px">
         <h4>Datos usuario:</h4>
-        <div style="padding: 1px 12px;background-color: lightgrey">
+        <div style="padding: 1px 12px;background-color: #3AC;font-size: 15px;color: white">
 
           <form class="" action="/perfil/edit" method="post">
                {% csrf_token %}
@@ -74,16 +74,16 @@
 
               <div class="form-group">
               <p class="required"> <label for="id_email">email:</label>
-                  <input class="form-control"  id="id_email" maxlength="30" name="email" type="text"  value={{user.user.email}} />{{user.user.email}}</p>
+                  <input class="form-control"  id="id_email" maxlength="30" name="email" type="text"  value={{user.email}} />{{user.email}}</p>
              </div>
 
              <div class="form-group">
              <p class="required"><label for="id_address">Dirección postal:</label>
-                 <input class="form-control"  id="id_address" name="address" type="text" value="{{address}}" />{{user.address}}</p>
+                 <input class="form-control"  id="id_address" name="address" type="text" value="{{user.address}}" />{{user.address}}</p>
             </div>
 
             <div class="form-group">
-              <p><label for="id_picture">Avatar:</label> <input id="id_picture" name="picture" type="file" /></p>
+              <p>Avatar:<input id="id_picture" name="picture" type="file" /></p>
             </div>
 
             <div class="form-group">

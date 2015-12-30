@@ -1,105 +1,116 @@
 {% extends "activity.html" %}{% block title %}{{user}}{% endblock %}
 {% load easy_maps_tags %}
 {% load staticfiles %}
-
 {% block menu %}
-<!-- Navigation -->
- <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
- <nav id="sidebar-wrapper">
-     <ul class="sidebar-nav">
-         <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-         <li class="sidebar-brand">
-             <a href="/"  onclick = $("#menu-close").click(); ><img src="{% static 'images/logo.png' %}" width="10%" height="10%">PLUCO</a>
-         </li>
-         <li>
-             <a href="/" onclick = $("#menu-close").click(); ><span class="fa fa-home fa-stack-1x text-primary"></span> Home</a>
-         </li>
-         {% if user  and request.user.is_authenticated %}
-         <li>
-           <a href="/perfil" onclick=$("#menu-close").click(); >
-             {% if user.picture %}
-                   <img src=/media/{{user.picture}} width="28px" height="28px">
-                   <p class="color">{{user	}}</p>
-               {% else %}
-                   <img src="{% static 'images/anonymous.png' %}" width="28px" height="28px">
-                   <p class="color">{{user	}}</p>
-               {% endif %}
-            </a>
-         </li>
-
-         <li>
-             <a href="/plucoApp/logout" onclick = $("#menu-close").click(); ><span class="fa fa-sign-out fa-stack-1x text-primary"></span> Cerrar sesión</a>
-         </li>
-         {% else %}
-         <li>
-             <a href="/plucoApp/login" onclick = $("#menu-close").click(); ><span class="fa fa-sign-in fa-stack-1x text-primary"></span> Iniciar sesión</a>
-         </li>
-         <li>
-             <a href="/plucoApp/register" onclick = $("#menu-close").click(); ><span class="fa fa-pencil fa-stack-1x text-primary"></span> Regístrate</a>
-         </li>
-         {% endif %}
-         <li>
-             <a href="/foros/#services" onclick = $("#menu-close").click(); ><span class="fa fa-gears fa-stack-1x text-primary"></span> Servicios</a>
-         </li>
-         <li>
-             <a href="/foros" onclick = $("#menu-close").click(); ><span class="fa fa-comments fa-stack-1x text-primary"></span> Foros</a>
-         </li>
-         <li>
-             <a href="/plucoApp/about" onclick = $("#menu-close").click(); ><span class="fa fa-support fa-stack-1x text-primary"></span> Contacto</a>
-         </li>
-     </ul>
- </nav>
- {% endblock %}
-
-{% block masOpciones %}
-{% if user %}
-<article class="container">
-  <div class="row">
-    <div>
-      <div>
-        <h3>Bienvenido: </h3>
-        <h3 >{{user}}</h3>
-      </div>
-      <hr>
-      <div style="padding-bottom: 14px">
-        <h4>Datos usuario:</h4>
-        <div style="padding: 1px 12px;background-color: lightgrey">
-          <p>Nombre: {{user}} </p>
-          <img src=/media/{{user.picture}} width="10%" height="10%" style="border: 1px solid black">
-          <p> Email: {{user.user.email}} </p>
-          <section id="contact" class="map">
-              <small>
-                  <h1>Dirección:{{user.address}}</h1>
-                  {% easy_map  user.address 900 400 using "easy_maps/map.html" %}
-              </small>
-
-          </section>
-
-        <div>
-      </div>
-  </div>
-</div>
-</article>
-{% else %}
-{% endif %}
+  <!-- Navigation -->
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand">
+        <a href="/"  onclick = $("#menu-close").click(); ><img src="{% static 'images/logo.png' %}" width="10%" height="10%">PLUCO</a>
+      </li>
+      <li>
+        <a href="/" onclick = $("#menu-close").click(); ><span class="fa fa-home fa-stack-1x text-primary"></span> Home</a>
+      </li>
+      {% if user  and request.user.is_authenticated %}
+        <li>
+          <a href="/perfil" onclick=$("#menu-close").click(); >
+            {% if user.picture %}
+              <img src=/media/{{user.picture}} width="28px" height="28px">
+              <p class="color">{{user }}</p>
+            {% else %}
+              <img src="{% static 'images/anonymous.png' %}" width="28px" height="28px">
+              <p class="color">{{user }}</p>
+            {% endif %}
+          </a>
+        </li>
+        <li>
+          <a href="/plucoApp/logout" onclick = $("#menu-close").click(); ><span class="fa fa-sign-out fa-stack-1x text-primary"></span> Cerrar sesión</a>
+        </li>
+      {% else %}
+        <li>
+          <a href="/plucoApp/login" onclick = $("#menu-close").click(); ><span class="fa fa-sign-in fa-stack-1x text-primary"></span> Iniciar sesión</a>
+        </li>
+        <li>
+          <a href="/plucoApp/register" onclick = $("#menu-close").click(); ><span class="fa fa-pencil fa-stack-1x text-primary"></span> Regístrate</a>
+        </li>
+      {% endif %}
+      <li>
+        <a href="/foros/#services" onclick = $("#menu-close").click(); ><span class="fa fa-gears fa-stack-1x text-primary"></span> Servicios</a>
+      </li>
+      <li>
+        <a href="/foros" onclick = $("#menu-close").click(); ><span class="fa fa-comments fa-stack-1x text-primary"></span> Foros</a>
+      </li>
+      <li>
+        <a href="/plucoApp/about" onclick = $("#menu-close").click(); ><span class="fa fa-support fa-stack-1x text-primary"></span> Contacto</a>
+      </li>
+    </ul>
+  </nav>
 {% endblock %}
+{% block masOpciones %}
+  {% if update %}
+    <div class="alert alert-success" style="font-size: 20px; color: white;background-color: green">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color: white; font-size: 30px">&times;</a>
+    <strong>OK!</strong> Datos cambiados.</div>
+  {% endif %}
+  {% if user %}
+    <article class="container">
+      <div class="row">
+        <div>
+          <div>
+            <h1>Perfil</h1>
+            <div class="container">
+              <a href="#" class="post-body"><img class="post-body" src=/media/{{user.picture}} width="10%" height="10%"></a>
+              <h3>{{user}}</h3>
+            </div>
+          </div>
+          <hr>
+          <div style="padding-bottom: 14px">
+            <div style="padding: 1px 12px;background-color: #3AC;font-size: 15px;color: white">
+              <table class="table" >
+                <caption><h4 style="color: white;font-size: 250%">Mis datos</h4></caption>
+                <tr>
+                  <td>Foto de perfil:</td>
+                  <td><img src=/media/{{user.picture}} width="10%" height="10%" style="border: 1px solid black"></td>
+                </tr>
+                <tr>
+                  <td>
+                    Nombre:
+                  </td>
+                  <td>{{user}} </td>
+                </tr>
+                <tr>
+                  <td>
+                    Email:
+                  </td>
+                  <td>{{user.email}} </td>
+                </tr>
+                <tr>
+                  <td>Dirección:{{user.address}}</td>
+                  <td class="container">{% easy_map  user.address 350 210 using "easy_maps/map.html" %}</td>
+                </tr>
+              </table>
 
-
-{% block botonesExtra %}
-<aside class="bg-primary" style="padding-bottom: 10px">
-    <div class="container">
-        <div class="row">
+            </div>
+          </div>
+        </article>
+      {% else %}
+      {% endif %}
+    {% endblock %}
+    {% block botonesExtra %}
+      <aside class="bg-primary" style="padding-bottom: 10px">
+        <div class="container">
+          <div class="row">
             <div class="col text-left">
               <h3>Modificar mis datos</h3>
-                <a href="/perfil/edit" class="btn btn-lg btn-dark">Editar perfil</a>
+              <a href="/perfil/edit" class="btn btn-lg btn-dark">Editar perfil</a>
+            </div>
+          </div>
         </div>
-    </div>
-   </div>
- </aside>
-
-{% endblock %}
-
-{% block articuloPrincipal %}{% endblock %}
-{% block servicios %}{% endblock %}
-{% block about %}{% endblock %}
-{% block map %}{% endblock %}
+      </aside>
+    {% endblock %}
+    {% block articuloPrincipal %}{% endblock %}
+    {% block servicios %}{% endblock %}
+    {% block about %}{% endblock %}
+    {% block map %}{% endblock %}
