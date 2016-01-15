@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	 <meta charset="utf-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta name="description" content="PLUCO-RLG">
+	 <meta name="author" content="Rafael Lachica Garrido">
+	 <link rel="icon" href="/static/images/logo.png">
+
+	<title>PLUCO - {% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/custom.css" type="text/css">
+
+	<style>
+	/* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+	</style>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: orange;position: static;margin-top: -50px">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">
+					<div class="banner">
+						<img style="margin-top: -30px; margin-right: 10px; margin-left: -25px" src="/static/images/logo.png" alt="logo" height="80px" width="150px"></a>
+						<h3>PLUCO &copy Comparte tu conocimiento!!!</h3>
+					</div>
+				</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+							<li><a class="menuLink" href="/"><span class="glyphicon glyphicon-home color"><p>HOME</p></span></a></li>
+									{% if user  and request.user.is_authenticated %}
+											<li><a href="/foros"><span class="glyphicon glyphicon-bullhorn color"><p>Foros</p></span></a></li>
+											<li><a href="/perfil">
+											{% if user.picture %}
+														<img src=/media/{{user.picture}} width="28px" height="28px">
+														<p class="color">{{user	}}</p>
+												{% else %}
+														<img src="/static/images/anonymous.png" width="28px" height="28px">
+														<p class="color">{{user	}}</p>
+												{% endif %}
+											</a></li>
+											<li><a href="/plucoApp/logout/"><span class="glyphicon glyphicon-log-out color"><p> Logout</p></a></li>
+											<li><a href="plucoApp/about"><span class="glyphicon glyphicon-info-sign color"><p>About<p></span></a></li>
+
+									{% else %}
+											<li><a href="/plucoApp/register/"><span class="glyphicon glyphicon-edit color"><p>Regístrate<p>	</span></a></li>
+											<li><a href="/plucoApp/login/"><span class="glyphicon glyphicon-log-in color"><p>Login</p></span></a></li>
+											<li><a href="plucoApp/about"><span class="glyphicon glyphicon-info-sign color"><p>About<p></span></a></li>
+									{% endif %}
+						</ul>
+			</div>
+		</div>
+	</div>
+
+ {% block panelIzda %}
+	<div class="col-sm-2 sidenav sidenavCustom">
+				<div class="well wellCustom">
+					<a href="/foros">Foros</a>
+					<p><a href="/foros"><img src="/static/images/foros.jpg" width="100%" height="100%" alt=""></a></p>
+				</div>
+				<div class="well wellCustom">
+					<a href="http://pluco-db.herokuapp.com/">
+					Asignaturas
+					</a>
+					<h2><a href="http://pluco-db.herokuapp.com/"><img src="/static/images/pluco-db.png" width="90%" height="90%"></a></h2>
+				</div>
+	</div>
+	{% endblock %}
+
+
+	<div id="background-green">
+		background
+	</div>
+	<div class="page">
+		<div class="home-page">
+			{% block  panelLateral%}
+			<div class="sidebar">
+  			<a href="/plucoApp/" id="logo"><img src="/static/images/logo.png" alt="logo" height="90" width="90"></a>
+  			<ul>
+    			<li class="home">
+      			<a href="/">Home</a>
+    			</li>
+    			<li class="about">
+      			<a href="/perfil">About</a>
+    			</li>
+    			<li class="projects">
+      			<a href="https://www.github.com/rafaellg8/DAI_PLUCO">Projects</a>
+    			</li>
+    			<li class="blog">
+      			<a href="/plucoApp/register/">Sign Up</a>
+    			</li>
+    			<li class="contact">
+      			<a href="/plucoApp/register/">Contact</a>
+    			</li>
+  		</ul>
+		</div>
+	{% endblock %}
+
+	<div class="body">
+
+
+				<div class="content-home">
+					{% block cabeceraTitulo %}
+					<div>
+						<h1>We are interior architects. What is <span class="beauty">beauty</span> without use. What is <span class="function">function</span> without aesthetics. our <span class="works">works have both</span>.</h1>
+						<p>
+							This website template has been designed by Free Website Templates for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the Forums.
+						</p>
+					</div>
+					<div class="botonera">
+					  <a href="/plucoApp/login/"><button>login</button></a>
+					  <a href="/plucoApp/register/"><button>register</button></a>
+					</div>
+					{% endblock %}
+					{% block articuloPrincipal %}
+					<div class="featured">
+						<img src="static/images/bed.jpg" alt="">
+					</div>
+					{% endblock %}
+					{% block extra %}
+					<div>
+						<ul>
+							<li>
+								<h2><a href="/foros">Foros</a></h2>
+								<a href="/foros"><img src="/static/images/foros.jpg" width="300px" height="185px" alt=""></a>
+								<h3><a href="/foros">Foros / Dudas</a></h3>
+								<p>
+									Foros asociados a PLUCO. Resuelve dudas, expón tus conocimientos, participa!!!
+								</p>
+								<a href="projects.html">Ver últimos foros</a>
+							</li>
+							<li>
+								<h2><a href="blog.html">Nube</a></h2>
+								<a href="blog.html"><img src="/static/images/nube.jpg" width="300px" height="185px" alt=""></a>
+								<h3><a href="blog.html">Almacenamiento en la nube</a></h3>
+								<p>
+									Almacenamientos de archivos en la nube.
+								</p>
+								<a href="blog.html">Últimos archivos compartidos</a>
+							</li>
+						</ul>
+					</div>
+					{% endblock %}
+				</div>
+		</div> <!--Div class body-->
+	</div> <!-- Div class home page -->
+</div> <!--Page -->
+
+{% block footer %}
+<footer class="container-fluid bg-4 text-center linkFooter">
+	<div class="row">
+        <div class="span12">
+            <ul >
+                <li>PLUCO 2015/16&copy</li>
+                <li>Rafael Lachica Garrido</li>
+								<br>
+								<li><a href="/">Home</a></li>
+								<li><a href="http://www.pluco-db.herokuapp.com">Pluco-DB</a></li>
+                <li><a href="http://www.github.com/rafaellg8/IV-PLUCO-RLG">About</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
