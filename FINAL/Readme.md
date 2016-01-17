@@ -1,7 +1,7 @@
 #Practica DAI
 
-##Autor: Rafael Lachica Garrid
-#Practica 4 Tango , Rango with Django
+##Autor: Rafael Lachica Garrido
+#Practica 4,5,6 Tango , Rango with Django
 
 ##Algunos comandos
 ###Crear proyecto
