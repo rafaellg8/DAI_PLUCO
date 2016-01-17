@@ -1,4 +1,7 @@
-##Practica 4 Tango , Rango with Django
+#Practica DAI
+
+##Autor: Rafael Lachica Garrid
+#Practica 4 Tango , Rango with Django
 
 ##Algunos comandos
 ###Crear proyecto
@@ -102,6 +105,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = ('STATIC_PATH',)
 ```
 
+Muy importante el URL de STATIC, con /
+
 Y en el directorio raíz del proyecto guardamos la carpeta static. Ahora configuramos en cada archvio donde tengamos css o imágenes:
 index.html:
 ```
@@ -137,8 +142,7 @@ Si todo da OK, generamos el superuser:
 Para ello debemos editar el archivo admin.py
 ```
 from django.contrib import admin
-from foros.models import Comment,Forum
-from plucoApp.models import User
+from plucoApp.models import Comment,Forum,User
 #importamos de plucoApp los modelos
 # Register your models here.
 
@@ -224,7 +228,7 @@ def comment(request):
         for c in com:
             idC = c.idComment+1
 
-        com = Comments(request.POST)
+        com = CommentsForm(request.POST)
 
         username = "usuariodeprueba"
         #validamos el formulario
@@ -270,9 +274,9 @@ def theme(request,theme):
     return render(request, 'forosCat.html', context_dict)
 ```
 
-Modificamos el showComments del views.py, para que muestre los comentarios ordeandos por tema y fecha también:
+Modificamos el showCommentsForm del views.py, para que muestre los comentarios ordeandos por tema y fecha también:
 ```
-def showComments(request,theme):
+def showCommentsForm(request,theme):
     #obtenemos el foro asociado a un tema
     form = Forum.objects.get(theme=theme)
     #filtramos comentarios de un foro con un tema
@@ -302,13 +306,13 @@ Finalmente modifico también los urls de la aplicación "foros":
 
 ```
 urlpatterns = patterns('',
-    url(r'(?P<theme>[\w\-]+)/$', views.showComments, name='theme'),
+    url(r'(?P<theme>[\w\-]+)/$', views.showCommentsForm, name='theme'),
     url(r'nuevoComentario', views.comment, name='comment'),
     url(r'^$', views.showForums, name='forums'),
     url(r'foros', views.showForums, name='comment'),
 )
 ```
-Así reconoce la llama a showComments por un determinado tema de un comentario, la primera línea de las urls.
+Así reconoce la llama a showCommentsForm por un determinado tema de un comentario, la primera línea de las urls.
 
 Ya sólo nos falta modificar los templates de los foros y comentarios para que muestren una lista de foros, y enlaces a esos comentarios de los foros.
 1. foros.html:
@@ -333,7 +337,7 @@ Obtiene el parámetro forum de las vistas y muestra una lista con los enlaces a 
 
 
 
-2. comenarios.html:
+2. comentarios.html:
 ```
 {% if com %}
     {% for c in com %}
@@ -353,151 +357,143 @@ Obtiene el parámetro forum de las vistas y muestra una lista con los enlaces a 
 Muestra los comentarios asociados al tema
 
 
-#Foros añadir espacios en el tema con Slugify
-1. Añadimos el campo SlugField en los modelos:
+##Configurando bootsrap y multidispositivo
+Para ello modificamos el index base:
 ```
-#Modelo Foros
-class Forum(models.Model):
-      title = models.CharField(max_length=128,help_text="Título de la hebra o foro nuevo",unique=True)
-      theme = models.CharField(max_length=50,help_text="Tema",unique=True)
-      asignature = models.CharField(max_length=25,help_text="asignature",unique=True)
-      visits = models.IntegerField(default=0)
-      slug = models.SlugField()
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="PLUCO-RLG">
+<meta name="author" content="Rafael Lachica Garrido">
+<link rel="icon" href="/static/images/logo.png">
 
-      def save(self, *args, **kwargs):
-          # Uncomment if you don't want the slug to change every time the name changes
-          #if self.id is None:
-          #self.slug = slugify(self.name)
-          self.slug = slugify(self.theme)
-          super(Forum, self).save(*args, **kwargs)
+<title>PLUCO - {% block title %}{% endblock %}</title>
 
-      def __unicode__(self):
-            return self.title
-```
-2. Modificamos la interfaz de admin:
-```
-# Add in this class to customized the Admin Interface
-class ForumAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug':('theme',)}
-
-admin.site.register(Comment)
-admin.site.register(Forum,ForumAdmin)
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 ```
 
-3. Actualizamos la vista de los comentarios
+##Registro de Usuarios
+Configuramos el settings.py, para por ejemplo las claves de los usuarios, aplicarle criptografía:
 ```
-def showComments(request,slug):
-    #obtenemos el foro asociado a un tema
-    #Hemos cambiado los campos tema por slug, que es el tema en forma slugify, ej: tema-de-prueba
-    form = Forum.objects.get(slug=slug)
-    #Obtenemos el tema asociado al foro, filtrado por slug
-    theme = form.theme
-    #filtramos comentarios de un foro con un tema, ordenados por la fecha más reciente
-    comForm = Comment.objects.filter(theme=form).order_by('-date')
-
-    if request.method =="POST":
-        idC = 0
-        com = Comment.objects.order_by('idComment')[:1]
-        for c in com:
-            idC = c.idComment+1
-
-        com = Comments(request.POST)
-
-        username = request.user
-        f = get_object_or_404(Forum,slug=slug)
-        #validamos el formulario
-        if com.is_valid():
-            comment = Comment()
-            comment.theme = f
-            comment.idComment = idC
-            comment.username = username
-            comment.commentText = request.POST["commentText"]
-            comment.title = request.POST["title"]
-            comment.date = datetime.date.today()
-
-            comment.save()
-
-            return redirect("/foros/theme/"+slug,{'com': comForm,})
-    else:
-        com = Comment.objects.order_by('idComment')[:1]
-        for c in com:
-            idC = c.idComment+1
-        com = Comment()
-
-    context = {'com': comForm,'commentForm':com,'theme': theme}
-    return render(request,'comentarios.html',context)
-```
-
-Ahora simplemente hemos filtrado por el tema slug, y lo usamos como clave primaria.
-
-La vista de foros también la modficamos:
-```
-"""
-Aumenta el número de visitas cada vez que se muestran los comentarios
-"""
-@login_required
-def numberVisits(request,slug):
-    #Obtener el foro por tema, en la forma slug
-    f = get_object_or_404(Forum,slug=slug)
-    f.visits = f.visits+1
-    f.save()
-
-    return showComments(request,slug)
-
-```
-4. Modificamos los templates de foros:
-```
-{% if forum %}
-      <div style="float: left padding-top: 1px">
-        <table class="table">
-          {% for f in forum %}
-               <!--Following line changed to add an HTML hyperlink -->
-               <tr>
-                 <th>
-                   <h4><a href="/foros/theme/{{ f.slug}}">{{ f.title }}</a></h4>
-                     <td><p>Visitas:{{ f.visits }}</p></td>
-                 </th>
-               </tr>
-               {% endfor %}
-        </table>
-           </div>
-```
-
-5. Modificamos la url:
-```
-urlpatterns = patterns('',
-    url(r'(?P<theme>[\w\-]+)/nuevoComentario', views.comment, name='comment'),
-    url(r'(?P<slug>[\w\-]+)/$', views.numberVisits, name='slug'),
-    url(r'reclama_datos',views.getVisits,name='graphic'),
-    url(r'like',views.like_comment,name='like'),
-    url(r'^$', views.showForums, name='forums'),
-    url(r'^foros', views.showForums, name='comment'),
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': settings.DEBUG}),
+PASSWORD_HASHERS = (
+        'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+'django.contrib.auth.hashers.BCryptPasswordHasher',
+'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 )
 ```
 
-Como en el modelo directamente creamos el campo slug de cada foro, no hace falta modificar nada más.
 
 
-==
-##JQUERY
-###Tamaño letras dinámico
-Aquí simplemente necesitamos el script en jqery y los botones asociados:
 
-En el template tenemos los links con las id que se actviarán en las funciones:
+##easy_maps
+Instalamos con ```pip install django-easy-maps```, y añadimos la línea en las apps instaladas en settings.py:
 ```
-<li>
-   <a id='aumentar' href="#"><span class="fa fa-plus fa-stack-1x text-primary"></span>+ Texto</a>
- </li>
- <li>
-   <a id="disminuir" href="#"><span class="fa fa-minus fa-stack-1x text-primary"></span>- Texto</a>
- </li>
- <li>
-   <a id="reiniciar" href="#"><span class="fa fa-refresh fa-stack-1x text-primary"></span>Reiniciar</a>
-</li>
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites.models',
+    'macros',
+    'easy_maps',
+    'bootstrap_toolkit',
+    'plucoApp',
+    'foros',
+    'registration',
+)
 ```
 
-Y en /js/pluco-ajax tenemos el script:
+Ahora simplemente en los templates donde mostarmos los datos de los usuarios hacemos lo siguiente:
+
+1. Cargamos easy_maps al inicio: ``` {% load easy_maps_tags %} ```
+2. Mostramos el mapa pasando como parámetro el user.address: ``` {% easy_map user.address 300 400 using 'map.html' %} ```
+
+
+
+## Gráficos con las visitas
+Archivo jquery, llamado **pluco.js**.
+```
+$.ajax({
+url: "/foros/reclama_datos",
+type: 'get',
+success: function(datos) {
+ console.log (datos.visits);
+ console.log(datos.theme);
+  Visualiza_datos(datos);
+},
+failure: function(datos) {
+  alert('esto no vá');
+}
+});
+function Visualiza_datos (datos) {
+
+  $('#container').highcharts({
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Número visitas'
+      },
+      xAxis: {
+          categories: datos.theme
+      },
+      yAxis: {
+          title: {
+              text: 'Temas'
+          }
+      },
+      series: [{
+          name: 'visitas',
+          data: datos.visits
+      }]
+  });
+}
+});
+```
+
+Modificamos la urls.py, de la carpeta foros:
+```
+url(r'reclama_datos',views.getVisits,name='graphic'),
+```
+
+Creamos la vista getVisits que devuelve el número de visitas:
+```
+def getVisits (request):
+    f = Forum.objects.all()
+    i=0
+    dataTheme = []
+    dataVisits = []
+    for forum in f:
+        dataTheme.append(forum.theme)
+        dataVisits.append(forum.visits)
+
+    data = {'theme': dataTheme,'visits': dataVisits}
+
+    return JsonResponse(data, safe=False)
+```
+
+Por último creamos el objeto con la id container en activity.html:
+```
+
+    {% block grafico %}
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 text-left">
+          <div id="container" style="height: 300px"></div>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}
+```
+
+## Aumentar tamaño fuentes
+Igual que antes código en jquery, pluco.js:
 ```
 $(function(){
   $("#aumentar").click( function() {
@@ -516,5 +512,107 @@ $(function(){
   /*Recargamos la página*/
   location.reload();
   });
-});
+
 ```
+Aquí obtenemos el cuerpo, y en los css aumentamos el tamaño de fuente.
+
+Y modificamos simplemente los html, con los botones asociados, a los que se llaman:
+```
+<li>
+   <a id='aumentar' href="#"><span class="fa fa-plus fa-stack-1x text-primary"></span>+ Texto</a>
+ </li>
+ <li>
+   <a id="disminuir" href="#"><span class="fa fa-minus fa-stack-1x text-primary"></span>- Texto</a>
+ </li>
+ <li>
+   <a id="reiniciar" href="#"><span class="fa fa-refresh fa-stack-1x text-primary"></span>Reiniciar</a>
+</li>
+
+```
+##Botón "Me gusta"
+
+Para crear el botón de me gusta, usaremos JQuery, además de DJANGO.
+
+Primero, modificamos los modelos de los comentarios, donde daremos  Me Gusta, para tener un contador. Además tendremos una clave externa al usuario que da a me gusta:
+```
+class Comment(models.Model):
+      """docstring for Comment"""
+      """temas, idComentario (número comentario)
+      título, comentario, usuario que hace el comentario,
+      url donde el usuario pone la url de su archivo a compartir si procede"""
+      theme = models.ForeignKey(Forum)
+      idComment = models.IntegerField(null=False)
+      title = models.CharField(max_length=128,help_text="Título del comentario, asunto",unique=True)
+      commentText = models.TextField(max_length=500,help_text="Introduce aquí tu comentario")
+      username = models.ForeignKey(User)
+      date = models.DateField()
+      likes = models.IntegerField(null=True,defaul=0)
+      #Usuario que da a me gusta
+      like_user = models.ForeignKey(User)
+      #url = models.URLField(blank=True)
+
+      def __unicode__(self):
+            return self.title
+```
+
+Ahora en las vistas de foros creamos el método para darle a me gusta y elevar el contador:
+```
+@login_required
+def like_comment(request):
+    com_id = None
+    if request.method == 'GET':
+        #obtenemos la id del comentario
+        com_id = request.GET['idComment']
+
+    likes = 0
+    #Si existe el comentario con esa id, le sumamos un "Me gusta"
+    if com_id:
+        cat = Cat.objects.get(id=int(com_id))
+        if cat:
+            likes = cat.likes + 1
+            cat.likes =  likes
+            cat.save()
+
+    return HttpResponse(likes)
+```
+
+Ahora en la página de los comentarios creamos el script en ajax, likes.js:
+```
+$(function(){
+        $(".like").click(function() {
+            var id;
+            id = $(this).attr("data-catid");
+
+             $.get('/foros/like', {idCom: id}, function(data){
+                      /*
+                      Obtenemos el like_count con id igual que el idCom.
+                      Lo usamos para mostrar el número de Likes.
+                      like_oculto lo usamos para ocultar el botón después.
+                      */
+                       var like_count = document.getElementById(id);
+                       //Obtenemos la id que sea liken, donde n es el número de comentario
+                       var like_oculto = document.getElementById('like'+id);
+                       $(like_count).html(data);
+                       $(like_count).show();
+                       $(like_oculto).hide();
+
+                   });
+        });
+});
+
+```
+
+Y la pequeña modificación del botón en HTML, en el archivo comentarios.html:
+```
+<td>
+  <!-- La id sera like0 o liken ,donde "n" es la id del comentario. Lo usamos para ocultar después el botón-->
+  <button id="like{{c.idComment}}" data-catid="{{c.idComment}}" class="like btn btn-primary" type="button">
+    <span class="fa fa-thumbs-o-up"></span> Like
+  </button>
+  <b id="{{c.idComment}}"  data-catid="{{c.idComment}}" class="fa fa-thumbs-up like-count" style="display: none; font-size: 150%">{{ c.likes }}</b>
+  <!-- Como no se pueden tener 2 id con el mismo nombre, necesito replicar aquí también algo que diferencie, el data-catid que
+  es el idComment -->
+</td>
+```
+
+Necesitamos el índice, like seguido del número de comentario para diferenciar entre ids.
